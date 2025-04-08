@@ -1,0 +1,48 @@
+.middle{
+    width:100%;
+    padding:20px;
+    border-radius: 10px;
+    background-color: #fff;
+    text-align: center;
+    margin-top: 200px  !important;
+  }
+  .errormsg{
+    text-align: start;
+  }
+  .middle img{
+    max-width:100%;
+    width:214px;
+    margin-bottom: 20px;
+  }
+  .form-floating{
+    width:60%;
+    margin:auto;
+  }
+  @media (max-width:767px) {
+    .form-floating{
+      width:100%;
+    }
+    .middle{
+      padding:10px;
+    }
+  }
+  .form-control{
+    border:none;
+    border-radius: 0;
+    border-bottom: 1px solid var(--primary-color);
+    padding:10px 5px 5px !important;
+  }
+  .form-control:focus {
+    box-shadow: none;
+  }
+  .form-floating>label{
+    right: 0;
+    left:auto;
+  }
+  .form-floating>.form-control:not(:placeholder-shown)~label, .form-floating>.form-select~label,
+  .form-floating>.form-control:-webkit-autofill~label {
+    color: rgba(var(--bs-body-color-rgb), .65);
+    transform: scale(.85) translateY(-1rem) translateX(.15rem);
+  }
+  
+  

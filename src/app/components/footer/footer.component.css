@@ -1,0 +1,101 @@
+.footer{
+    box-shadow: 1px -6px 8px 0px #aaa;
+    background-color: #fff;
+  }
+  .tail .container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border-top:2px solid #aaa;
+  }
+  .tail{
+    font-size: 25px;
+  }
+  @media(max-width:767px){
+    .tail{
+      font-size: 15px;
+    }
+  }
+  .img{
+    width:214px;
+    max-width: 100%;
+  }
+  .tail {
+    background-color: #fff;
+  }
+  .tail p{
+    padding:5px;
+    margin: 0 !important;
+  }
+  .tail span{
+    color:var(--main-danger);
+  }
+  .pio{
+    color:var(--primary-color);
+    font-size: 22px;
+  }
+  h4{
+    font-size: 18xp;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .footer p{
+    margin-bottom: 0;
+  }
+  .socialLinks{
+    padding:0;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+  }
+  .socialLinks li{
+    margin: 0 5px;
+  }
+  .footer .socialLinks li a{
+    text-decoration: none;
+    color:#fff;
+    font-size:20px;
+    border-radius: 50%;
+    height:40px;
+    width:40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+  }
+  .socialLinks li #face{
+    background-color:#1877f2 ;
+  }
+  .socialLinks li #face:hover{
+    background-color:transparent ;
+    color:#1877f2;
+    border:1px solid #1877f2;
+  }
+  .socialLinks li #twitter{
+    background-color:#1da1f2 ;
+  }
+  .socialLinks li #twitter:hover{
+    background-color:transparent ;
+    color:#1da1f2;
+    border:1px solid #1da1f2;
+  }
+  .socialLinks li #link{
+    background-color:#004285 ;
+  }
+  .socialLinks li #link:hover{
+    background-color:transparent ;
+    color:#004285;
+    border:1px solid #004285;
+  }
+  .socialLinks li #youtube{
+    background-color:#ff0000 ;
+  }
+  .socialLinks li #youtube:hover{
+    background-color:transparent ;
+    color:#ff0000;
+    border:1px solid #ff0000;
+  }
+  

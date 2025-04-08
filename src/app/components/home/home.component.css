@@ -1,0 +1,32 @@
+.faress{
+
+    padding-top:  70px !important;
+}
+.cardd{
+    background-color: white;
+    border-radius: 6px;
+    padding:10px;
+    border:none;
+  }
+  .cardd .top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cardd .top i{
+    font-size: 20px;
+    background-color: var(--primary-color);
+    padding:10px;
+    border-radius: 50%;
+  }
+  .cardd h3{
+  
+  }
+  .cardd .top h3{
+  
+  }
+  .maxx{
+    max-width: 310px !important;
+ 
+  }
+  /* background-color: rgba(244, 112, 112, 0.726); */

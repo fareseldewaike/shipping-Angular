@@ -1,1 +1,71 @@
-/* You can add global styles to this file, and also import other style files */
+ @import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap");
+
+ 
+ 
+:root{
+  --primary-color:#0a85b9;
+  --blue-color:#00aaf363;
+  --main-danger:#cf1201;
+  /* --main-color: #0aad0a;
+  --light-color: #f0f3f2; */
+}
+*{
+  direction: rtl !important;
+  padding:0;
+  margin:0;
+}
+html{
+  scroll-behavior: smooth;
+
+}
+body{
+  background-color: #ececec;
+  font-family: "Cairo", sans-serif;
+  font-family: var(--font-family) !important;
+}
+.btn-danger{
+  background-color: var(--main-danger) !important;
+}
+.btn-primary{
+  background-color: var(--primary-color) !important;
+}
+/* NavBar Css Style */
+.nav-link{
+  font-weight: bold;
+}
+.nav-link:hover{
+  color:var(--primary-color);
+}
+  .fares{
+  color:var(--primary-color) !important;
+  transition: 0.9s ease;
+  position: relative;
+}
+.fares::after{
+  content:'';
+  position: absolute;
+  left:0;
+  right:0;
+  bottom:-1px;
+  height:2px;
+  background-color:var(--primary-color) !important;
+ 
+
+}
+.logo{
+  max-width: 100%;
+  width: 214px;
+}
+.navbar-toggler {
+  border: none;
+}
+.navbar-toggler:focus {
+  box-shadow: 0 0 1px 1px var(--primary-color);
+}
+
+
+ .white{
+  background-color: #fff;
+  border-radius: 6px;
+}
+ 

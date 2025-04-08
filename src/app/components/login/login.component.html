@@ -1,0 +1,30 @@
+<div class="container d-flex  ">
+    <div class="middle">
+      <img src="assets/images/Logo.png" alt="">
+      <form action="" class="w-100 border-1" [formGroup]="userForm" (ngSubmit)="Submit()">
+        <div class="form-floating mb-3">
+          <input type="text" name="email" class="form-control" id="floatingInput" placeholder="البريد الالكترونى" formControlName="email">
+          <label for="floatingInput">البريد الالكترونى</label>
+          <div class="errormsg" [hidden]="email?.valid || email?.untouched">
+            <small class="text-danger text-end" *ngIf="email?.errors?.['required']">
+              الايميل مطلوب
+            </small>
+          </div>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="password" name="password" class="form-control" placeholder="الباسورد" id="floatingInput2" formControlName="password">
+          <label for="floatingInput2">الباسورد</label>
+          <div class="errormsg" [hidden]="password?.valid ||password?.untouched">
+            <small class="text-danger" *ngIf="password?.errors?.['required']">
+              الباسورد مطلوب
+            </small>
+          </div>
+        </div>
+        <div class="form-floating text-end">
+          <small class="text-danger ms-auto" *ngIf="error!=''">{{error}}</small>
+        </div>
+        <button class="btn btn-primary mt-2" [disabled]="userForm.invalid">تسجيل الدخول</button>
+      </form>
+    </div>
+  </div>
+  

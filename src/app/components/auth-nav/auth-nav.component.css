@@ -1,0 +1,15 @@
+nav{
+    position:fixed;
+    top:0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 0 5px 5px #7e7e7ebb;
+  }
+  
+nav a{
+    font-size: 20px;
+     color: rgb(74, 74, 74);;
+}  
+nav a:hover{
+    color: var(--primary-color);
+}

@@ -1,0 +1,114 @@
+.about-us {
+     
+    padding: 60px 20px;
+    background: linear-gradient(to right, #f5f7fa,rgb(92, 162, 197));
+    text-align: center;
+    /* width: calc(100vw -  30px); */
+    height: 100vh;
+   
+  }
+  
+  .about-us .title {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .about-us .description {
+    font-size: 1.2rem;
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+    line-height: 1.6;
+  }
+  
+  .features {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  
+  .feature {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .feature:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  }
+  
+  .icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+  }
+
+/******************************************************************************************/
+
+  .right{
+    position: relative;
+    margin-top: 110px;
+    padding-top: 200px;
+  }
+ 
+  .truck{
+    position: absolute;
+    left:20%;
+    top:60%;
+    z-index: 3;
+    transform: translateY(-50%);
+    max-width: 100%;
+    animation: trans ease-in-out 3s infinite;
+  }
+  .line{
+    position: absolute;
+    left:10%;
+    top:60%;
+    z-index: 3;
+    transform: translateY(-50%);
+  }
+  .octa{
+    position: absolute;
+    left:20%;
+    top:50%;
+    transform: translateY(-50%);
+  }
+  .sky1{
+    position: absolute;
+    left:30%;
+    top:1%;
+    z-index: 2;
+    transform: translateY(-50%);
+  }
+  .sky2{
+    position: absolute;
+    left:20%;
+    top:1%;
+    z-index: 2;
+    transform: translateY(-50%);
+  }
+  @keyframes trans{
+    0%{
+      left:20%;
+    }
+    50%{
+      left:0;
+    }
+    100%{
+      left:20%;
+    }
+  }
+  .left h2{
+    font-size: 44px;
+    font-weight: bolder;
+  }
+  .left p{
+    font-size: 22px;
+  }
