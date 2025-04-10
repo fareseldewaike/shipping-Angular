@@ -1,0 +1,37 @@
+<div class="mt-5 container p-5">
+    <h1 class="text-center text-muted mb-4">Our Branches</h1>
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-outline-primary" [routerLink]="[0, 'edit']">
+        Add New Branch
+      </button>
+    </div>
+    <table class="table mt-5">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Status</th>
+          <th scope="col">DateTime</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr *ngFor="let branch of branches">
+              <th scope="row">{{ branch.id }}</th>
+              <td>{{ branch.name}}</td>
+              <td>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" [checked]="branch.status" disabled>
+                </div>
+              </td>
+              
+              <td>{{ branch.dateTime | date: 'yyyy-MM-dd'}}</td>
+              <td>
+                <i class="text-info fs-5 mx-2 fas fa-pencil-alt" [routerLink]="['/branches', branch.id, 'edit']"></i>
+                <i class="text-danger fs-5 mx-2 fas fa-trash" (click)="deleteHandler(branch.id)"></i>
+
+              </td>
+            </tr>
+      </tbody>
+    </table>
+</div>

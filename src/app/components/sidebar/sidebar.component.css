@@ -1,0 +1,7 @@
+.nav-link {
+    transition: 0.3s;
+  }
+  .nav-link:hover {
+    background-color: #495057;
+  }
+  

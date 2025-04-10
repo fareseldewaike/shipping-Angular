@@ -1,0 +1,121 @@
+<!-- <div class="container mt-5">
+    <h2 class="mb-4">Add New Group</h2>
+    <form [formGroup]="groupForm" (ngSubmit)="submitGroup()">
+      <div class="mb-3">
+        <label for="groupName" class="form-label">Group Name</label>
+        <input type="text" id="groupName" class="form-control" formControlName="name" placeholder="Enter group name">
+      </div>
+  
+      <div class="table-responsive">
+        <table class="table table-bordered mt-4">
+          <thead class="table-light">
+            <tr>
+              <th>Permission</th>
+              <th *ngFor="let action of selectedPermissions">{{ action }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let perm of allPermissions; let i = index">
+              <td>{{ perm.permissionName }}</td>
+              <td *ngFor="let action of selectedPermissions">
+                <input type="checkbox"
+                       [checked]="isChecked(perm.permissionName, action)"
+                       (change)="toggleAction(perm.permissionName, action, $event)">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+  
+    <pre class="mt-4 bg-light p-3">{{ groupForm.value | json }}</pre>
+</div> -->
+  
+
+
+   <!-- <div class="container mt-4">
+    <form [formGroup]="groupForm" (ngSubmit)="onSubmit()">
+  
+      <div class="form-group mb-3">
+        <label for="groupName">اسم المجموعة</label>
+        <input type="text" id="groupName" class="form-control" formControlName="name" placeholder="ادخل اسم المجموعة" />
+      </div>
+  
+      <table class="table table-bordered text-center">
+        <thead class="thead-light">
+          <tr>
+            <th>الصلاحية</th>
+            <th *ngFor="let action of actions">{{ action }}</th>
+          </tr>
+        </thead>
+        <tbody formArrayName="permissions">
+            <tr *ngFor="let permission of permissionsFormArray.controls; let i = index" [formGroupName]="i">
+                <td>{{ permission.get('permissionName')?.value }}</td>
+              
+                
+                <ng-container [formGroup]="get(permission)">
+
+                  <td *ngFor="let action of actions">
+                    <input type="checkbox" [formControlName]="action" />
+                  </td>
+                </ng-container>
+              </tr>
+              
+        </tbody>
+      </table>
+  
+      <div class="text-end">
+        <button type="submit" class="btn btn-primary">إضافة المجموعة</button>
+      </div>
+      
+    </form>
+  </div> -->
+  
+<div class="container mt-5">
+    <h2 class="mb-4">اضافه صلاحيه</h2>
+    <form [formGroup]="groupForm" (ngSubmit)="submitGroup()">
+      <div class="mb-3">
+        <label for="groupName" class="form-label">اسم الصلاحيه</label>
+        <input type="text" id="groupName" class="form-control" formControlName="name" placeholder="Enter group name">
+      </div>
+  
+      <div class="table-responsive">
+        <table class="table table-bordered mt-4">
+          <thead class="table-light">
+            <tr>
+              <th>Permission</th>
+              <th *ngFor="let perm of allPermissions[0]?.actions">{{ perm }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let perm of allPermissions; let i = index">
+              <td>{{ perm.permissionName }}</td>
+              <td *ngFor="let action of perm.actions">
+                <input type="checkbox"
+                       [checked]="isChecked(perm.permissionName, action)"
+                       (change)="toggleAction(perm.permissionName, action, $event)">
+                <label></label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <button type="submit" class="btn btn-primary mt-3">اضافه</button>
+      <a class="btn btn-outline-dark btn-md w-auto px-4 py-2 mx-2"
+            [routerLink]="['/groups']">
+            Back to list
+          </a>
+    </form>
+  
+    <pre class="mt-4 bg-light p-3">{{ groupForm.value | json }}</pre>
+</div>
+
+
+
+
+  
+  
+  

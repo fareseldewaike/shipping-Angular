@@ -1,0 +1,57 @@
+<div class="container p-4 mt-5">
+    <h1>    {{ branchId == 0 ? "Add New Branch" : "Edit Branch" }} </h1>
+    <form [formGroup]="branchForm" (submit)="branchHandler()">
+        <div>
+            <label for="branchName"></label>
+            <input type="text" class="form-control" id="branchName" aria-describedby="emailHelp"
+            placeholder="Enter branch Name"
+            formControlName="Name" />
+    
+            <div *ngIf="getName.touched">
+                <div *ngIf="getName.hasError('required')">
+                  <div id="emailHelp" class="form-text text-danger">
+                    Branch Name is required
+                  </div>
+                </div>
+                <div *ngIf="getName.hasError('minlength')">
+                  <div id="emailHelp" class="form-text text-danger">
+                    Branch Name length must be greater than 3
+                  </div>
+                </div>
+            </div>
+              
+        </div>
+    
+
+
+        <div class="form-check form-switch mt-3">
+          <input type="checkbox" class="form-check-input" id="branchStatus"
+                 [checked]="getStatus.value"
+                 (change)="onStatusChange($event)">
+          <label class="form-check-label"
+                 [ngClass]="{ 'text-success': getStatus.value, 'text-danger': !getStatus.value }"
+                 for="branchStatus">
+            الحاله
+          </label>
+        </div>
+        
+    
+    
+    
+       
+    
+        <p class="lead mt-2">{{ branchForm.value | json }}</p>
+    
+        <div class="mb-3 mt-4 d-flex justify-content-start">
+          <button type="submit" class="btn btn-dark btn-md w-auto px-4 py-2 mx-2">
+            {{ branchId == 0 ? "Add New Branch" : "Edit Branch" }}
+          </button>
+          
+          <a class="btn btn-outline-dark btn-md w-auto px-4 py-2 mx-2"
+            [routerLink]="['/branches']">
+            Back to list
+          </a>
+        </div>
+    </form>
+    
+</div>

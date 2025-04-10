@@ -1,0 +1,61 @@
+<div class="mt-5 container p-5">
+    <h1 class="text-muted mb-4">المحافظات</h1>
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addGovernModal">
+        إضافة محافظة
+      </button>
+      
+
+    </div>
+    <table class="table mt-5">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr *ngFor="let govern of Governorates">
+              <th scope="row">{{ govern.id }}</th>
+              <td>{{ govern.name}}</td>
+              <td>
+                <i class="text-info fs-5 mx-2 fas fa-pencil-alt" [routerLink]="['/governorates', govern.id, 'edit']"></i>
+                <i class="text-danger fs-5 mx-2 fas fa-trash" (click)="deleteHandler(govern.id)"></i>
+
+              </td>
+            </tr>
+      </tbody>
+    </table>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="addGovernModal" tabindex="-1" aria-labelledby="addGovernModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="addGovernModalLabel">إضافة محافظة جديدة</h5>
+      </div>
+
+      <form [formGroup]="governForm" (ngSubmit)="governHandler()">
+        <div class="modal-body">
+          <input type="text" class="form-control" placeholder="اسم المحافظة" formControlName="Name">
+          <div *ngIf="getName.touched && getName.invalid" class="text-danger mt-2">
+            <div *ngIf="getName.errors?.['required']">اسم المحافظة مطلوب</div>
+            <div *ngIf="getName.errors?.['minlength']">يجب أن يكون الاسم أطول من 3 حروف</div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">إضافة</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

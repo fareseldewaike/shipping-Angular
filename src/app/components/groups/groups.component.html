@@ -1,0 +1,31 @@
+<div class="mt-5 container p-5">
+    <h1 class="text-center text-muted mb-4">الصلاحيات </h1>
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-outline-primary" [routerLink]="[0, 'edit']">
+        اضافه صلاحيه
+      </button>
+    </div>
+    <table class="table mt-5">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">DateTime</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr *ngFor="let group of groups">
+              <th scope="row">{{ group.id }}</th>
+              <td>{{ group.name}}</td>
+              
+              <td>{{ group.date | date: 'yyyy-MM-dd'}}</td>
+              <td>
+                <i class="text-info fs-5 mx-2 fas fa-pencil-alt" [routerLink]="['/groups', group.id, 'edit']"></i>
+                <i class="text-danger fs-5 mx-2 fas fa-trash" (click)="deleteHandler(group.id)"></i>
+
+              </td>
+            </tr>
+      </tbody>
+    </table>
+</div>

@@ -1,0 +1,28 @@
+<div class="mt-5 container p-5">
+    <h1 class="text-center text-muted mb-4">Our weights</h1>
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-outline-primary" [routerLink]="[0, 'edit']">
+        Add New weight
+      </button>
+    </div>
+    <table class="table mt-5">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">defaultWeight</th>
+          <th scope="col">additionalPrice</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr *ngFor="let weight of weights">
+              <th scope="row">{{ weight.id }}</th>
+              <td>{{ weight.defaultWeight}}</td>
+              <td>{{ weight.additionalPrice }}</td>
+              <td>
+                <i class="text-info fs-5 mx-2 fas fa-pencil-alt" [routerLink]="['/weights', weight.id, 'edit']"></i>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+</div>
