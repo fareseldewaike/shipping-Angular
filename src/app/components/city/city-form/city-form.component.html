@@ -1,0 +1,87 @@
+<div class="container p-4 mt-5">
+    <h1>    {{ cityId == 0 ? "Add New city" : "Edit city" }} </h1>
+    <form [formGroup]="cityForm" (submit)="cityHandler()">
+        <div>
+            <label for="cityName">اسم المدينه</label>
+            <input type="text" class="form-control" id="cityName" aria-describedby="emailHelp"
+            placeholder="Enter city Name"
+            formControlName="Name" />
+    
+            <div *ngIf="getName.touched">
+                <div *ngIf="getName.hasError('required')">
+                  <div id="emailHelp" class="form-text text-danger">
+                    city Name is required
+                  </div>
+                </div>
+                <div *ngIf="getName.hasError('minlength')">
+                  <div id="emailHelp" class="form-text text-danger">
+                    city Name length must be greater than 3
+                  </div>
+                </div>
+            </div>
+  
+            
+            <div class="form-group mt-3">
+              <label for="governorate">المحافظه</label>
+              <select id="governorate" class="form-control" formControlName="GovernorateId">
+                <option value="">-- Select Governorate --</option>
+                <option *ngFor="let gov of governorates" [value]="gov.id">{{ gov.name }}</option>
+              </select>
+            
+              <div *ngIf="cityForm.controls['GovernorateId'].touched && cityForm.controls['GovernorateId'].hasError('required')">
+                <div class="text-danger">
+                  Governorate is required
+                </div>
+              </div>
+            </div>
+
+
+
+            <label for="cityPrice">التكلفه</label>
+            <input type="text" class="form-control" id="cityPrice" aria-describedby="emailHelp"
+            placeholder="Enter price"
+            formControlName="Price" />
+    
+            <div *ngIf="getPrice.touched">
+                <div *ngIf="getPrice.hasError('required')">
+                  <div id="emailHelp" class="form-text text-danger">
+                    city price is required
+                  </div>
+                </div>
+            </div>
+            
+            <label for="cityPickup">التكلفه ال pickup</label>
+            <input type="text" class="form-control" id="cityPickup" aria-describedby="emailHelp"
+            placeholder="Enter Pickup"
+            formControlName="Pickup" />
+    
+            <!-- <div *ngIf="getPrice.touched">
+                <div *ngIf="getPrice.hasError('required')">
+                  <div id="emailHelp" class="form-text text-danger">
+                    city price is required
+                  </div>
+                </div>
+            </div> -->
+
+
+        </div>
+    
+            
+       
+    
+        <p class="lead mt-2">{{ cityForm.value | json }}</p>
+        
+    
+        <div class="mb-3 mt-4 d-flex justify-content-start">
+          <button type="submit" class="btn btn-dark btn-md w-auto px-4 py-2 mx-2">
+            {{ cityId == 0 ? "Add New city" : "Edit city" }}
+          </button>
+          
+          <a class="btn btn-outline-dark btn-md w-auto px-4 py-2 mx-2"
+            [routerLink]="['/cities']">
+            Back to list
+          </a>
+        </div>
+    </form>
+    
+</div>

@@ -1,0 +1,52 @@
+<div class="container mt-4">
+
+  <h1 class="text-center text-muted mb-4">المدن</h1>
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-outline-primary" [routerLink]="[0, 'edit']">
+        اضافه مدينه
+      </button>
+    </div>
+
+
+    <label for="govSelect" class="form-label mt-5">اختر محافظة</label>
+    <select class="form-select" id="govSelect" (change)="onGovernorateChange($event)">
+      <option disabled selected>-- اختر محافظة --</option>
+      <option *ngFor="let gov of governorates" [value]="gov.id">
+        {{ gov.name }}
+      </option>
+    </select>
+</div>
+
+<div class="container mt-4" style="margin-top: 500px;">
+    <!-- جدول المدن -->
+    <table class="table mt-4">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>اسم المحافظة</th>
+          <th>اسم المدينة</th>
+          <th>تكلفه الشحن</th>
+          <th>تكلفه ال  pickup</th>
+
+          <th scope="col">الاعدادات</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="selectedCities.length === 0">
+          <td colspan="2" class="text-center text-muted"></td>
+        </tr>
+        <tr *ngFor="let city of selectedCities">
+          <td>{{ city.id }}</td>
+          <td>{{ getGovernorateNameByCityId(city.id) }}</td>
+          <td>{{ city.name }}</td>
+          <td>{{ city.price }}</td>
+          <td>{{ city.pickup }}</td>
+          <i class="text-info fs-5 mx-2 fas fa-pencil-alt" [routerLink]="['/cities', city.id, 'edit']"></i>
+          <i class="text-danger fs-5 mx-2 fas fa-trash" (click)="deleteHandler(city.id)"></i>
+
+        </tr>
+      </tbody>
+    </table>
+</div>
+  
+  

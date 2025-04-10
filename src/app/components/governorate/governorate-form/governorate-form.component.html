@@ -1,0 +1,47 @@
+<div class="container p-4 mt-5">
+    <h1>   {{ governId == 0 ? "Add New goveren" : "Edit govern" }} </h1>
+    <form [formGroup]="governForm" (submit)="governHandler()">
+        <div>
+            <label for="governName"></label>
+            <input type="text" class="form-control" id="governName" aria-describedby="emailHelp"
+            placeholder="Enter govern Name"
+            formControlName="Name" />
+    
+            <div *ngIf="getName.touched">
+                <div *ngIf="getName.hasError('required')">
+                  <div id="emailHelp" class="form-text text-danger">
+                    govern Name is required
+                  </div>
+                </div>
+                <div *ngIf="getName.hasError('minlength')">
+                  <div id="emailHelp" class="form-text text-danger">
+                    govern Name length must be greater than 3
+                  </div>
+                </div>
+            </div>
+              
+        </div>
+    
+        
+          
+       
+    
+    
+    
+       
+    
+        <p class="lead mt-2">{{ governForm.value | json }}</p>
+    
+        <div class="mb-3 mt-4 d-flex justify-content-start">
+          <button type="submit" class="btn btn-dark btn-md w-auto px-4 py-2 mx-2">
+            {{ governId == 0 ? "Add New govern" : "Edit govern" }}
+          </button>
+          
+          <a class="btn btn-outline-dark btn-md w-auto px-4 py-2 mx-2"
+            [routerLink]="['/governorates']">
+            Back to list
+          </a>
+        </div>
+    </form>
+    
+</div>
