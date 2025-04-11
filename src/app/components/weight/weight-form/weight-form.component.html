@@ -1,53 +1,51 @@
-<div class="container p-4 mt-5">
-    <h1>    {{ weightId == 0 ? "Add New weight" : "Edit weight" }} </h1>
-    <form [formGroup]="weightForm" (submit)="branchHandler()">
-        <div>
-            <label for="defaultWeight"></label>
-            <input type="text" class="form-control" id="defaultWeight" aria-describedby="emailHelp"
-            placeholder="Enter branch Name"
-            formControlName="DefaultWeight" />
-    
-            <div *ngIf="getDefaultWeight.touched">
-                <div *ngIf="getDefaultWeight.hasError('required')">
-                  <div id="emailHelp" class="form-text text-danger">
-                    default Weight is required
-                  </div>
-                </div>
-            </div>
-              
-        </div>
+<div class="container p-4 mt-5 bg-white shadow rounded permissions-container animate-fade-in position-relative">
+  <div class="background-image"></div>
 
-        <div>
-            <label for="additionalPrice"></label>
-            <input type="text" class="form-control" id="additionalPrice" aria-describedby="emailHelp"
-            placeholder="Enter additional price"
-            formControlName="AdditionalPrice" />
-    
-            <div *ngIf="getAdditionalPrice.touched">
-                <div *ngIf="getAdditionalPrice.hasError('required')">
-                  <div id="emailHelp" class="form-text text-danger">
-                    additional Price is required
-                  </div>
-                </div>
-            </div>
-              
-        </div>
-    
-    
-       
-    
-        <p class="lead mt-2">{{ weightForm.value | json }}</p>
-    
-        <div class="mb-3 mt-4 d-flex justify-content-start">
-          <button type="submit" class="btn btn-dark btn-md w-auto px-4 py-2 mx-2">
-            {{ weightId == 0 ? "Add New weight" : "Edit weight" }}
-          </button>
-          
-          <a class="btn btn-outline-dark btn-md w-auto px-4 py-2 mx-2"
-            [routerLink]="['/weights']">
-            Back to list
-          </a>
-        </div>
-    </form>
-    
+  <h1 class="text-muted text-center mb-4 display-6 fw-bold">
+    <i class="fas fa-balance-scale me-2"></i>
+    {{ weightId == 0 ? "إضافة وزن جديد" : "تعديل الوزن" }}
+  </h1>
+
+  <form [formGroup]="weightForm" (submit)="branchHandler()">
+
+    <!-- الوزن الأساسي -->
+    <div class="mb-3">
+      <label for="defaultWeight" class="form-label text-secondary">الوزن الأساسي</label>
+      <input
+        type="text"
+        class="form-control"
+        id="defaultWeight"
+        placeholder="ادخل الوزن الأساسي"
+        formControlName="DefaultWeight"
+      />
+      <div *ngIf="getDefaultWeight.touched && getDefaultWeight.hasError('required')" class="text-danger mt-1">
+        الوزن الأساسي مطلوب
+      </div>
+    </div>
+
+    <!-- السعر الإضافي -->
+    <div class="mb-3">
+      <label for="additionalPrice" class="form-label text-secondary">السعر الإضافي</label>
+      <input
+        type="text"
+        class="form-control"
+        id="additionalPrice"
+        placeholder="ادخل السعر الإضافي"
+        formControlName="AdditionalPrice"
+      />
+      <div *ngIf="getAdditionalPrice.touched && getAdditionalPrice.hasError('required')" class="text-danger mt-1">
+        السعر الإضافي مطلوب
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-start mt-4">
+      <button type="submit" class="btn btn-primary px-4 py-2 mx-2 animate-pop">
+        {{ weightId == 0 ? "إضافة وزن" : "تحديث الوزن" }}
+      </button>
+
+      <a class="btn btn-outline-dark px-4 py-2 mx-2" [routerLink]="['/weights']">
+        رجوع للقائمة
+      </a>
+    </div>
+  </form>
 </div>

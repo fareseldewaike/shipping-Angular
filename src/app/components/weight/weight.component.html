@@ -1,28 +1,36 @@
-<div class="mt-5 container p-5">
-    <h1 class="text-center text-muted mb-4">Our weights</h1>
-    <div class="d-flex justify-content-between">
-      <button class="btn btn-outline-primary" [routerLink]="[0, 'edit']">
-        Add New weight
-      </button>
-    </div>
-    <table class="table mt-5">
-      <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">defaultWeight</th>
-          <th scope="col">additionalPrice</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-            <tr *ngFor="let weight of weights">
-              <th scope="row">{{ weight.id }}</th>
-              <td>{{ weight.defaultWeight}}</td>
-              <td>{{ weight.additionalPrice }}</td>
-              <td>
-                <i class="text-info fs-5 mx-2 fas fa-pencil-alt" [routerLink]="['/weights', weight.id, 'edit']"></i>
-              </td>
-            </tr>
-      </tbody>
-    </table>
+<div class="mt-5 container p-5 bg-white shadow rounded permissions-container animate-fade-in position-relative">
+  <h1 class="text-center text-muted mb-4 display-6 fw-bold">
+    <i class="fas fa-weight me-2"></i> الأوزان
+  </h1>
+
+  <div class="d-flex justify-content-end mb-3">
+    <button class="btn btn-outline-primary animate-pop" [routerLink]="[0, 'edit']">
+      <i class="fas fa-plus me-2"></i> إضافة وزن جديد
+    </button>
+  </div>
+
+  <table class="table table-hover mt-4 text-center align-middle animate-slide-up">
+    <thead class="table-light text-white">
+      <tr>
+        <th scope="col">المعرف</th>
+        <th scope="col">الوزن الأساسي</th>
+        <th scope="col">السعر الإضافي</th>
+        <th scope="col">الإجراءات</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let weight of weights">
+        <th scope="row">{{ weight.id }}</th>
+        <td>{{ weight.defaultWeight }}</td>
+        <td>{{ weight.additionalPrice }}</td>
+        <td>
+          <i class="text-info fs-5 mx-2 fas fa-pencil-alt cursor-pointer"
+             [routerLink]="['/weights', weight.id, 'edit']" title="تعديل"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+
+<!-- خلفية ثابتة موحدة -->
+<div class="background-image"></div>

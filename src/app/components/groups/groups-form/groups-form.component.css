@@ -1,0 +1,239 @@
+/* تحسين التصميم العام */
+.container {
+    background-color: #f8f9fa; /* الخلفية فاتحة */
+    border-radius: 10px; /* حواف دائرية */
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* تأثير الظلال لإضفاء عمق */
+    animation: fadeIn 0.8s ease-in-out;
+  }
+  
+  /* تأثيرات أنيميشن */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* تحسين العناوين */
+  h2, .display-4 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #495057;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    color: #007bff; /* اللون الأزرق الفاتح لعناوين الحقول */
+  }
+  
+  /* الحقول والنماذج */
+  input.form-control, select.form-control {
+    font-size: 1.1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* تأثير الحقول عند التفاعل */
+  input.form-control:focus, select.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* تحسين الأزرار */
+  .btn {
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .btn:hover {
+    transform: scale(1.05);
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+  
+  .btn-outline-secondary {
+    border-color: #6c757d;
+    color: #6c757d;
+  }
+  
+  .btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: #fff;
+  }
+  
+  /* تحسين الجدول */
+  .table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  .table th, .table td {
+    padding: 15px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #dee2e6;
+  }
+  
+  .table thead {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .table tbody tr {
+    background-color: #f9f9f9;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #e2e6ea;
+    cursor: pointer;
+  }
+  
+  .table-striped tbody tr:nth-child(odd) {
+    background-color: #f8f9fa;
+  }
+  
+  .table-striped tbody tr:nth-child(even) {
+    background-color: #ffffff;
+  }
+  
+  /* تحسين مربعات الاختيار */
+  input.form-check-input {
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+  }
+  
+  input.form-check-input:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  input.form-check-input:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+  }
+  
+  /* النصوص التوضيحية */
+  label.form-label {
+    font-weight: 500;
+    color: #495057;
+    font-size: 1.1rem;
+  }
+  
+  .text-danger {
+    color: #e74a3b;
+  }
+  
+  .font-weight-bold {
+    font-weight: 600;
+  }
+  
+  /* تصميم الـ Pre */
+  pre {
+    background-color: #e9ecef;
+    border-radius: 10px;
+    padding: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    word-wrap: break-word;
+    color: #333;
+  }
+  
+  /* تحسين العناصر التفاعلية */
+  .d-flex {
+    gap: 15px;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .bg-light {
+    background-color: #f8f9fa;
+  }
+  
+  /* تحسين التباعد بين العناصر */
+  .mt-4 {
+    margin-top: 2rem;
+  }
+  
+  .mb-4 {
+    margin-bottom: 2rem;
+  }
+  
+  .mx-2 {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  
+  /* إضافة تأثيرات للـ Modal */
+  .modal-content {
+    border-radius: 10px;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease;
+  }
+  
+  .modal-header {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .modal-footer {
+    text-align: center;
+  }
+  
+  /* تحسين عرض المحتوى عند التفاعل مع العناصر */
+  .animate-pop {
+    animation: pop 0.3s ease-in-out;
+  }
+  
+  @keyframes pop {
+    0% {
+      transform: scale(0.9);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  

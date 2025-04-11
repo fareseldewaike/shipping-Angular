@@ -1,4 +1,90 @@
-i.fas:hover {
-    color: #ff5722;
-    cursor: pointer;
-  }
+/* الحاوية */
+.container {
+  background-color: #f9fafb;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.8s ease;
+}
+
+/* العناوين */
+h1 {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #0d6efd;
+}
+
+/* الأزرار */
+.btn {
+  font-size: 1.1rem;
+  padding: 10px 24px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: #0d6efd;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* الأيقونات */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.fas.fa-pencil-alt:hover {
+  color: #0d6efd;
+  transform: scale(1.2);
+  transition: 0.3s ease;
+}
+
+/* الجدول */
+.table {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table th, .table td {
+  padding: 14px;
+  font-size: 1.05rem;
+}
+
+.table thead {
+  background-color: #007bff;
+  color: white;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f1f3f5;
+}
+
+/* أنيميشن */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.7s ease-in-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-in-out;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.9); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.animate-pop {
+  animation: pop 0.4s ease;
+}

@@ -1,31 +1,45 @@
-<div class="mt-5 container p-5">
-    <h1 class="text-center text-muted mb-4">الصلاحيات </h1>
-    <div class="d-flex justify-content-between">
-      <button class="btn btn-outline-primary" [routerLink]="[0, 'edit']">
-        اضافه صلاحيه
-      </button>
-    </div>
-    <table class="table mt-5">
-      <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Name</th>
-          <th scope="col">DateTime</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-            <tr *ngFor="let group of groups">
-              <th scope="row">{{ group.id }}</th>
-              <td>{{ group.name}}</td>
-              
-              <td>{{ group.date | date: 'yyyy-MM-dd'}}</td>
-              <td>
-                <i class="text-info fs-5 mx-2 fas fa-pencil-alt" [routerLink]="['/groups', group.id, 'edit']"></i>
-                <i class="text-danger fs-5 mx-2 fas fa-trash" (click)="deleteHandler(group.id)"></i>
-
-              </td>
-            </tr>
-      </tbody>
-    </table>
+<div class="mt-5 container p-5 bg-white shadow rounded permissions-container animate-fade-in">
+  <h1 class="text-center text-muted mb-4 display-6">الصلاحيات</h1>
+  
+  <div class="d-flex justify-content-end mb-3">
+    <button
+      class="btn btn-outline-primary animate-pop"
+      [routerLink]="[0, 'edit']"
+    >
+      <i class="fas fa-plus me-2"></i> إضافة صلاحية
+    </button>
+  </div>
+  
+  <table class="table table-hover mt-4 text-center align-middle animate-slide-up">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">المعرف</th>
+        <th scope="col">اسم الصلاحية</th>
+        <th scope="col">التاريخ</th>
+        <th scope="col">الإجراءات</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let group of groups">
+        <th scope="row">{{ group.id }}</th>
+        <td>{{ group.name }}</td>
+        <td>{{ group.date | date: 'yyyy-MM-dd' }}</td>
+        <td>
+          <i
+            class="text-info fs-5 mx-2 fas fa-pencil-alt cursor-pointer"
+            [routerLink]="['/groups', group.id, 'edit']"
+            title="تعديل"
+          ></i>
+          <i
+            class="text-danger fs-5 mx-2 fas fa-trash cursor-pointer"
+            (click)="deleteHandler(group.id)"
+            title="حذف"
+          ></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+
+<!-- إضافة صورة خلفية جميلة -->
+<div class="background-image"></div>

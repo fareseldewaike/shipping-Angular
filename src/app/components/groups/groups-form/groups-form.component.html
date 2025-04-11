@@ -73,45 +73,50 @@
     </form>
   </div> -->
   
-<div class="container mt-5">
-    <h2 class="mb-4">اضافه صلاحيه</h2>
+  <div class="container mt-5 p-4 bg-light shadow rounded animate-fade-in">
+    <h2 class="text-center mb-4 display-4 font-weight-bold">إضافة صلاحية</h2>
     <form [formGroup]="groupForm" (ngSubmit)="submitGroup()">
-      <div class="mb-3">
-        <label for="groupName" class="form-label">اسم الصلاحيه</label>
-        <input type="text" id="groupName" class="form-control" formControlName="name" placeholder="Enter group name">
+      <div class="mb-4">
+        <label for="groupName" class="form-label text-dark font-weight-bold">اسم الصلاحية</label>
+        <input type="text" id="groupName" class="form-control form-control-lg border-primary" formControlName="name" placeholder="أدخل اسم الصلاحية" />
       </div>
   
       <div class="table-responsive">
-        <table class="table table-bordered mt-4">
-          <thead class="table-light">
+        <table class="table table-bordered mt-4 table-striped table-hover text-center table-light animate-slide-up">
+          <thead class="bg-primary text-white">
             <tr>
-              <th>Permission</th>
+              <th>الصلاحية</th>
               <th *ngFor="let perm of allPermissions[0]?.actions">{{ perm }}</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let perm of allPermissions; let i = index">
-              <td>{{ perm.permissionName }}</td>
+              <td class="text-dark font-weight-bold">{{ perm.permissionName }}</td>
               <td *ngFor="let action of perm.actions">
                 <input type="checkbox"
                        [checked]="isChecked(perm.permissionName, action)"
-                       (change)="toggleAction(perm.permissionName, action, $event)">
-                <label></label>
+                       (change)="toggleAction(perm.permissionName, action, $event)"
+                       class="form-check-input form-check-input-lg">
               </td>
             </tr>
           </tbody>
         </table>
       </div>
   
-      <button type="submit" class="btn btn-primary mt-3">اضافه</button>
-      <a class="btn btn-outline-dark btn-md w-auto px-4 py-2 mx-2"
-            [routerLink]="['/groups']">
-            Back to list
-          </a>
+      <div class="d-flex justify-content-between mt-4">
+        <button type="submit" class="btn btn-success btn-lg w-auto px-4 py-2 animate-pop">
+          إضافة
+        </button>
+        <a class="btn btn-outline-secondary btn-lg w-auto px-4 py-2 mx-2"
+           [routerLink]="['/groups']">
+          العودة للقائمة
+        </a>
+      </div>
     </form>
   
-    <pre class="mt-4 bg-light p-3">{{ groupForm.value | json }}</pre>
-</div>
+    <pre class="mt-4 bg-light p-3 border rounded">{{ groupForm.value | json }}</pre>
+  </div>
+  
 
 
 

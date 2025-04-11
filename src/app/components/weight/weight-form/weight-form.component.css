@@ -1,0 +1,77 @@
+/* ===== خلفية الصفحة ===== */
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://source.unsplash.com/1600x900/?scale,measurement');
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px);
+    z-index: -1;
+  }
+  
+  /* ===== كرت / فورم بستايل جذاب ===== */
+  .permissions-container {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 30px;
+    animation: fadeIn 1s ease-in-out;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* ===== أنيميشن Fade In عام ===== */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fade-in {
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  /* ===== أنيميشن للأزرار عند الهوفر ===== */
+  .animate-pop {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  .animate-pop:hover {
+    transform: scale(1.05);
+  }
+  
+  /* ===== تحسين الإدخال ===== */
+  input:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.25);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  input.ng-touched.ng-invalid {
+    border-color: #dc3545;
+  }
+  
+  /* ===== ألوان متناسقة ===== */
+  .text-info {
+    color: #17a2b8 !important;
+  }
+  .text-secondary {
+    color: #6c757d !important;
+  }
+  .text-danger {
+    color: #dc3545 !important;
+  }
+  
+  /* ===== خط العرض للمعاينة ===== */
+  p.lead {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #444;
+  }
+  

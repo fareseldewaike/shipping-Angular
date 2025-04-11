@@ -1,4 +1,60 @@
-i.fas:hover {
-    color: #ff5722;
-    cursor: pointer;
+.branches-container {
+  background: #ffffff;
+  border: 1px solid #e3e3e3;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-in;
+}
+
+.animate-slide-up {
+  animation: slideUp 1s ease-out;
+}
+
+.animate-pop {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.animate-pop:hover {
+  transform: scale(1.05);
+  background-color: #0d6efd;
+  color: white;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+table th,
+table td {
+  vertical-align: middle;
+}
+
+.form-check-input:disabled {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  opacity: 0.6;
+}

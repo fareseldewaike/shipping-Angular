@@ -1,52 +1,58 @@
-<div class="container mt-4">
+<!-- المدن -->
+<div class="container mt-4 bg-white shadow rounded p-4 city-container animate-fade-in">
+  <h1 class="text-center text-muted mb-4 display-6 border-bottom pb-2">المدن</h1>
 
-  <h1 class="text-center text-muted mb-4">المدن</h1>
-    <div class="d-flex justify-content-between">
-      <button class="btn btn-outline-primary" [routerLink]="[0, 'edit']">
-        اضافه مدينه
-      </button>
-    </div>
+  <div class="d-flex justify-content-end mb-3">
+    <button class="btn btn-outline-primary px-4 py-2 animate-pop" [routerLink]="[0, 'edit']">
+      <i class="fas fa-plus me-2"></i> إضافة مدينة
+    </button>
+  </div>
 
-
-    <label for="govSelect" class="form-label mt-5">اختر محافظة</label>
-    <select class="form-select" id="govSelect" (change)="onGovernorateChange($event)">
-      <option disabled selected>-- اختر محافظة --</option>
-      <option *ngFor="let gov of governorates" [value]="gov.id">
-        {{ gov.name }}
-      </option>
-    </select>
+  <label for="govSelect" class="form-label fw-bold">اختر محافظة</label>
+  <select class="form-select mb-4" id="govSelect" (change)="onGovernorateChange($event)">
+    <option disabled selected>-- اختر محافظة --</option>
+    <option *ngFor="let gov of governorates" [value]="gov.id">
+      {{ gov.name }}
+    </option>
+  </select>
 </div>
 
-<div class="container mt-4" style="margin-top: 500px;">
-    <!-- جدول المدن -->
-    <table class="table mt-4">
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>اسم المحافظة</th>
-          <th>اسم المدينة</th>
-          <th>تكلفه الشحن</th>
-          <th>تكلفه ال  pickup</th>
-
-          <th scope="col">الاعدادات</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngIf="selectedCities.length === 0">
-          <td colspan="2" class="text-center text-muted"></td>
-        </tr>
-        <tr *ngFor="let city of selectedCities">
-          <td>{{ city.id }}</td>
-          <td>{{ getGovernorateNameByCityId(city.id) }}</td>
-          <td>{{ city.name }}</td>
-          <td>{{ city.price }}</td>
-          <td>{{ city.pickup }}</td>
-          <i class="text-info fs-5 mx-2 fas fa-pencil-alt" [routerLink]="['/cities', city.id, 'edit']"></i>
-          <i class="text-danger fs-5 mx-2 fas fa-trash" (click)="deleteHandler(city.id)"></i>
-
-        </tr>
-      </tbody>
-    </table>
+<!-- جدول المدن -->
+<div class="container mt-4 bg-white shadow rounded p-4 animate-slide-up">
+  <table class="table table-hover text-center align-middle">
+    <thead class="table-light">
+      <tr>
+        <th>المعرف</th>
+        <th>اسم المحافظة</th>
+        <th>اسم المدينة</th>
+        <th>تكلفة الشحن</th>
+        <th>تكلفة الاستلام</th>
+        <th>الإعدادات</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="selectedCities.length === 0">
+        <td colspan="6" class="text-center text-muted">لا توجد مدن لعرضها</td>
+      </tr>
+      <tr *ngFor="let city of selectedCities">
+        <td>{{ city.id }}</td>
+        <td>{{ getGovernorateNameByCityId(city.id) }}</td>
+        <td>{{ city.name }}</td>
+        <td>{{ city.price }}</td>
+        <td>{{ city.pickup }}</td>
+        <td>
+          <i
+            class="text-info fs-5 mx-2 fas fa-pencil-alt cursor-pointer"
+            [routerLink]="['/cities', city.id, 'edit']"
+            title="تعديل"
+          ></i>
+          <i
+            class="text-danger fs-5 mx-2 fas fa-trash cursor-pointer"
+            (click)="deleteHandler(city.id)"
+            title="حذف"
+          ></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-  
-  

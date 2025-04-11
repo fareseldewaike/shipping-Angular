@@ -1,7 +1,7 @@
 export interface IBranch {
-  
-  id: number;
-  name: string;
-  status: boolean;
-  dateTime: Date;
+  id: number
+  name: string
+  status: boolean
+  dateTime: string
 }
+

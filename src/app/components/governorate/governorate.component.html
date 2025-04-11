@@ -1,57 +1,72 @@
-<div class="mt-5 container p-5">
-    <h1 class="text-muted mb-4">المحافظات</h1>
-    <div class="d-flex justify-content-between">
-      <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addGovernModal">
-        إضافة محافظة
-      </button>
-      
+<div class="mt-5 container p-5 bg-white shadow rounded governorates-container animate-fade-in">
+  <h1 class="text-muted mb-4 border-bottom pb-2 text-center display-6">المحافظات</h1>
 
-    </div>
-    <table class="table mt-5">
-      <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Name</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-            <tr *ngFor="let govern of Governorates">
-              <th scope="row">{{ govern.id }}</th>
-              <td>{{ govern.name}}</td>
-              <td>
-                <i class="text-info fs-5 mx-2 fas fa-pencil-alt" [routerLink]="['/governorates', govern.id, 'edit']"></i>
-                <i class="text-danger fs-5 mx-2 fas fa-trash" (click)="deleteHandler(govern.id)"></i>
+  <div class="d-flex justify-content-end mb-3">
+    <button
+      class="btn btn-outline-primary animate-pop"
+      data-bs-toggle="modal"
+      data-bs-target="#addGovernModal"
+    >
+      <i class="fas fa-plus me-2"></i> إضافة محافظة
+    </button>
+  </div>
 
-              </td>
-            </tr>
-      </tbody>
-    </table>
+  <table class="table table-hover mt-4 text-center align-middle animate-slide-up">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">المعرف</th>
+        <th scope="col">اسم المحافظة</th>
+        <th scope="col">الإجراءات</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let govern of Governorates">
+        <th scope="row">{{ govern.id }}</th>
+        <td>{{ govern.name }}</td>
+        <td>
+          <i
+            class="text-info fs-5 mx-2 fas fa-pencil-alt cursor-pointer"
+            [routerLink]="['/governorates', govern.id, 'edit']"
+            title="تعديل"
+          ></i>
+          <i
+            class="text-danger fs-5 mx-2 fas fa-trash cursor-pointer"
+            (click)="deleteHandler(govern.id)"
+            title="حذف"
+          ></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
-
-
-
-<!-- Modal -->
+<!-- Modal لإضافة محافظة جديدة -->
 <div class="modal fade" id="addGovernModal" tabindex="-1" aria-labelledby="addGovernModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
 
       <div class="modal-header">
         <h5 class="modal-title" id="addGovernModalLabel">إضافة محافظة جديدة</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
       </div>
 
       <form [formGroup]="governForm" (ngSubmit)="governHandler()">
         <div class="modal-body">
-          <input type="text" class="form-control" placeholder="اسم المحافظة" formControlName="Name">
+          <label class="form-label fw-bold mb-2">اسم المحافظة</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="أدخل اسم المحافظة"
+            formControlName="Name"
+          />
           <div *ngIf="getName.touched && getName.invalid" class="text-danger mt-2">
             <div *ngIf="getName.errors?.['required']">اسم المحافظة مطلوب</div>
-            <div *ngIf="getName.errors?.['minlength']">يجب أن يكون الاسم أطول من 3 حروف</div>
+            <div *ngIf="getName.errors?.['minlength']">الاسم يجب أن يكون أطول من ٣ حروف</div>
           </div>
         </div>
 
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">إضافة</button>
+          <button type="submit" class="btn btn-primary px-4">إضافة</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
         </div>
       </form>
