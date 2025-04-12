@@ -26,6 +26,9 @@ import { WeightComponent } from './components/weight/weight.component';
 import { WeightFormComponent } from './components/weight/weight-form/weight-form.component';
 import { AdminLayoutComponent } from './components/admin-layout/admin-layout.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { GroupEditComponent } from './components/groups/group-edit/group-edit.component';
+import { MerchantFormComponent } from './components/merchant/merchant-form/merchant-form.component';
+import { MerchantComponent } from './components/merchant/merchant.component';
 
 
 
@@ -51,7 +54,10 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
    WeightComponent,
    WeightFormComponent,
    AdminLayoutComponent,
-   SidebarComponent
+   SidebarComponent,
+   GroupEditComponent,
+   MerchantFormComponent,
+   MerchantComponent
   ],
   imports: [
     BrowserModule,

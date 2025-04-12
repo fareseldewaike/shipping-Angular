@@ -48,7 +48,7 @@ export class GovernorateComponent implements OnInit, OnDestroy {
   deleteHandler(governId: number) {
     Swal.fire({
       title: 'هل أنت متأكد؟',
-      text: 'لن تتمكن من استرجاع هذا الفرع بعد حذفه!',
+      text: 'لن تتمكن من استرجاع هذا المحافظه بعد حذفه!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'نعم، احذفه!',
@@ -65,14 +65,11 @@ export class GovernorateComponent implements OnInit, OnDestroy {
 
   governHandler() {
     if (this.governForm.valid) {
-      console.log('Form Value:', this.governForm.value); // للتأكد من القيم المرسلة
-
+      console.log('Form Value:', this.governForm.value); 
       this.GovernorateService.addNewgovern(this.governForm.value).subscribe({
         next: (res) => {
-          // إعادة تحميل القائمة من السيرفر للتأكد من ظهور الاسم
           this.loadGovernorates();
 
-          // إغلاق المودال
           const modalElement = document.getElementById('addGovernModal');
           if (modalElement) {
             const modalInstance = bootstrap.Modal.getInstance(modalElement);

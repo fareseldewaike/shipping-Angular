@@ -18,7 +18,7 @@ export class GroupService {
           return this.http.get<IGroup[]>(`${this.baseUrl}/AllGroups`);
         }
         getGroupById(groupId: string): Observable<IGroup> {
-          return this.http.get<IGroup>(`${this.baseUrl}/${groupId}`);
+          return this.http.get<IGroup>(`${this.baseUrl}/permissions/${groupId}`);
         }
         addNewGroup(group: any): Observable<IGroup> {
           return this.http.post<IGroup>(`${this.baseUrl}/AddGroup`, group);
