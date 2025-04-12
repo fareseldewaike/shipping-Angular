@@ -1,38 +1,8 @@
-<!-- <div class="container mt-5">
-    <h2 class="mb-4">Add New Group</h2>
-    <form [formGroup]="groupForm" (ngSubmit)="submitGroup()">
-      <div class="mb-3">
-        <label for="groupName" class="form-label">Group Name</label>
-        <input type="text" id="groupName" class="form-control" formControlName="name" placeholder="Enter group name">
-      </div>
-  
-      <div class="table-responsive">
-        <table class="table table-bordered mt-4">
-          <thead class="table-light">
-            <tr>
-              <th>Permission</th>
-              <th *ngFor="let action of selectedPermissions">{{ action }}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let perm of allPermissions; let i = index">
-              <td>{{ perm.permissionName }}</td>
-              <td *ngFor="let action of selectedPermissions">
-                <input type="checkbox"
-                       [checked]="isChecked(perm.permissionName, action)"
-                       (change)="toggleAction(perm.permissionName, action, $event)">
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-  
-      <button type="submit" class="btn btn-primary mt-3">Submit</button>
-    </form>
-  
-    <pre class="mt-4 bg-light p-3">{{ groupForm.value | json }}</pre>
-</div> -->
-  
+
+
+
+
+
 
 
    <!-- <div class="container mt-4">
@@ -73,12 +43,16 @@
     </form>
   </div> -->
   
-  <div class="container mt-5 p-4 bg-light shadow rounded animate-fade-in">
-    <h2 class="text-center mb-4 display-4 font-weight-bold">إضافة صلاحية</h2>
-    <form [formGroup]="groupForm" (ngSubmit)="submitGroup()">
+<div class="container mt-5 p-4 bg-light shadow rounded animate-fade-in">
+    <h2 class="text-center mb-4 display-4 font-weight-bold">
+      {{ groupId === 0 ? "إضافة صلاحية" : "تعديل صلاحية" }}
+    </h2>
+  
+    <form *ngIf="true" [formGroup]="groupForm" (ngSubmit)="submitGroup()" novalidate>
       <div class="mb-4">
-        <label for="groupName" class="form-label text-dark font-weight-bold">اسم الصلاحية</label>
-        <input type="text" id="groupName" class="form-control form-control-lg border-primary" formControlName="name" placeholder="أدخل اسم الصلاحية" />
+        <label for="groupName" class="form-label fw-bold">اسم الصلاحية</label>
+        <input type="text" id="groupName" class="form-control form-control-lg border-primary"
+               formControlName="name" placeholder="أدخل اسم الصلاحية" />
       </div>
   
       <div class="table-responsive">
@@ -86,17 +60,17 @@
           <thead class="bg-primary text-white">
             <tr>
               <th>الصلاحية</th>
-              <th *ngFor="let perm of allPermissions[0]?.actions">{{ perm }}</th>
+              <th *ngFor="let action of allPermissions[0]?.actions">{{ action }}</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let perm of allPermissions; let i = index">
-              <td class="text-dark font-weight-bold">{{ perm.permissionName }}</td>
+            <tr *ngFor="let perm of allPermissions">
+              <td class="fw-bold">{{ perm.permissionName }}</td>
               <td *ngFor="let action of perm.actions">
                 <input type="checkbox"
                        [checked]="isChecked(perm.permissionName, action)"
                        (change)="toggleAction(perm.permissionName, action, $event)"
-                       class="form-check-input form-check-input-lg">
+                       class="form-check-input form-check-input-lg" />
               </td>
             </tr>
           </tbody>
@@ -104,18 +78,18 @@
       </div>
   
       <div class="d-flex justify-content-between mt-4">
-        <button type="submit" class="btn btn-success btn-lg w-auto px-4 py-2 animate-pop">
-          إضافة
+        <button type="submit" class="btn btn-success btn-lg px-4 py-2 animate-pop">
+          {{ groupId === 0 ? "إضافة" : "تحديث" }}
         </button>
-        <a class="btn btn-outline-secondary btn-lg w-auto px-4 py-2 mx-2"
-           [routerLink]="['/groups']">
+        <a class="btn btn-outline-secondary btn-lg px-4 py-2 mx-2" [routerLink]="['/groups']">
           العودة للقائمة
         </a>
       </div>
     </form>
-  
-    <pre class="mt-4 bg-light p-3 border rounded">{{ groupForm.value | json }}</pre>
-  </div>
+</div>
+
+
+
   
 
 

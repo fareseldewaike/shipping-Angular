@@ -19,6 +19,9 @@ import { WeightFormComponent } from './components/weight/weight-form/weight-form
 import { WeightComponent } from './components/weight/weight.component';
 import { CommonModule } from '@angular/common'; 
 import { AdminLayoutComponent } from './components/admin-layout/admin-layout.component';
+import { GroupEditComponent } from './components/groups/group-edit/group-edit.component';
+import { MerchantComponent } from './components/merchant/merchant.component';
+import { MerchantFormComponent } from './components/merchant/merchant-form/merchant-form.component';
 
 
 const routes: Routes = [
@@ -63,6 +66,13 @@ const routes: Routes = [
     //groups
     { path: 'groups', component: GroupsComponent },
     { path: 'groups/:id/edit', component: GroupsFormComponent },
+    
+
+
+      //merchants
+    { path: 'merchants', component: MerchantComponent },
+    { path: 'merchants/:id/edit', component: MerchantFormComponent },
+
 
      ]
   },

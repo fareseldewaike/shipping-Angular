@@ -1,13 +1,12 @@
-/* تحسين التصميم العام */
+
 .container {
-    background-color: #f8f9fa; /* الخلفية فاتحة */
-    border-radius: 10px; /* حواف دائرية */
+    background-color: #f8f9fa;  
+    border-radius: 10px; 
     padding: 40px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* تأثير الظلال لإضفاء عمق */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     animation: fadeIn 0.8s ease-in-out;
   }
   
-  /* تأثيرات أنيميشن */
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -30,7 +29,7 @@
     }
   }
   
-  /* تحسين العناوين */
+
   h2, .display-4 {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #495057;
@@ -42,10 +41,10 @@
   
   h2 {
     font-size: 1.8rem;
-    color: #007bff; /* اللون الأزرق الفاتح لعناوين الحقول */
+    color: #007bff; 
   }
+
   
-  /* الحقول والنماذج */
   input.form-control, select.form-control {
     font-size: 1.1rem;
     padding: 1rem;
@@ -54,13 +53,13 @@
     transition: border 0.3s ease, box-shadow 0.3s ease;
   }
   
-  /* تأثير الحقول عند التفاعل */
+ 
   input.form-control:focus, select.form-control:focus {
     border-color: #007bff;
     box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
   }
   
-  /* تحسين الأزرار */
+
   .btn {
     font-size: 1.2rem;
     font-weight: 500;
@@ -93,7 +92,8 @@
     color: #fff;
   }
   
-  /* تحسين الجدول */
+
+
   .table {
     width: 100%;
     margin-top: 20px;
@@ -129,7 +129,7 @@
     background-color: #ffffff;
   }
   
-  /* تحسين مربعات الاختيار */
+ 
   input.form-check-input {
     width: 20px;
     height: 20px;
@@ -146,7 +146,7 @@
     transition: transform 0.2s ease;
   }
   
-  /* النصوص التوضيحية */
+
   label.form-label {
     font-weight: 500;
     color: #495057;
@@ -161,7 +161,7 @@
     font-weight: 600;
   }
   
-  /* تصميم الـ Pre */
+
   pre {
     background-color: #e9ecef;
     border-radius: 10px;
@@ -174,7 +174,7 @@
     color: #333;
   }
   
-  /* تحسين العناصر التفاعلية */
+
   .d-flex {
     gap: 15px;
   }
@@ -187,7 +187,7 @@
     background-color: #f8f9fa;
   }
   
-  /* تحسين التباعد بين العناصر */
+
   .mt-4 {
     margin-top: 2rem;
   }
@@ -201,7 +201,7 @@
     margin-right: 1rem;
   }
   
-  /* إضافة تأثيرات للـ Modal */
+
   .modal-content {
     border-radius: 10px;
     padding: 30px;
@@ -220,7 +220,7 @@
     text-align: center;
   }
   
-  /* تحسين عرض المحتوى عند التفاعل مع العناصر */
+
   .animate-pop {
     animation: pop 0.3s ease-in-out;
   }

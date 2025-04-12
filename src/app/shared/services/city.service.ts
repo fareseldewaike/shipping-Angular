@@ -13,6 +13,9 @@ export class CityService {
       constructor(private http: HttpClient) {}
       
       
+       getAllCities(): Observable<ICity[]> {
+         return this.http.get<ICity[]>(`${this.baseUrl}/All`);
+        }
         getCityById(cityId: string): Observable<ICity> {
           return this.http.get<ICity>(`${this.baseUrl}/${cityId}`);
         }

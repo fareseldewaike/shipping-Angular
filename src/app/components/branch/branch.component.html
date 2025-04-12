@@ -24,7 +24,7 @@
           <td>{{ branch.name }}</td>
           <td>
             <div class="form-check form-switch d-flex justify-content-center">
-              <input class="form-check-input" type="checkbox" [checked]="branch.status" disabled>
+              <input class="form-check-input" type="checkbox" [checked]="branch.status" (change)="toggleStatus(branch)">
             </div>
           </td>
           <td>{{ branch.dateTime | date: 'yyyy-MM-dd' }}</td>
