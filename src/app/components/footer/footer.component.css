@@ -1,4 +1,4 @@
-.footer{
+/* .footer{
     box-shadow: 1px -6px 8px 0px #aaa;
     background-color: #fff;
   }
@@ -97,5 +97,106 @@
     background-color:transparent ;
     color:#ff0000;
     border:1px solid #ff0000;
+  }
+   */
+   .footer {
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 0px 0 20px 0;
+  }
+  
+  .footer .img {
+    width: 120px;
+    margin-bottom: 10px;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .footer .pio {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 10px;
+    padding: 0 10px;
+  }
+  
+  .footer h4 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .socialLinks {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .socialLinks li a {
+    font-size: 1.6rem;
+    color: #444;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .socialLinks li a:hover {
+    color: #007bff;
+    transform: scale(1.2);
+  }
+  
+  #face { color: #3b5998; }
+  #link { color: #0077b5; }
+  #twitter { color: #1da1f2; }
+  #youtube { color: #ff0000; }
+  
+  .tail {
+    background-color: #e9ecef;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #666;
+  }
+  
+  .tail span {
+    font-weight: bold;
+    color: #000;
+  }
+  
+  @media (max-width: 768px) {
+    .footer .pio {
+      font-size: 0.95rem;
+    }
+  
+    .footer h4 {
+      font-size: 1.1rem;
+    }
+  
+    .socialLinks {
+      gap: 12px;
+    }
+  
+    .socialLinks li a {
+      font-size: 1.4rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .footer .img {
+      width: 90px;
+    }
+  
+    .footer .pio {
+      font-size: 0.9rem;
+    }
+  
+    .socialLinks li a {
+      font-size: 1.3rem;
+    }
+  
+    .tail {
+      font-size: 0.85rem;
+    }
   }
   

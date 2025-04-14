@@ -1,4 +1,4 @@
-.faress{
+/* .faress{
 
     padding-top:  70px !important;
 }
@@ -28,5 +28,72 @@
   .maxx{
     max-width: 310px !important;
  
+  } */
+  .dashboard-section {
+    background-color: #f5f7fa;
+    min-height: 100vh;
+    margin-top: 120px !important;
+    margin-bottom: 100px !important;
+    padding: 30px; 
   }
-  /* background-color: rgba(244, 112, 112, 0.726); */
+  
+  .header h3 {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .status-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    height: 100%;
+  }
+  
+  .status-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .status-card .icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .status-card h5 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+  }
+  
+  .status-card p {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  
+  .status-card.new .icon { color: #0d6efd; }
+  .status-card.pending .icon { color: #ffc107; }
+  .status-card.delivered .icon { color: #17a2b8; }
+  .status-card.success .icon { color: #28a745; }
+  .status-card.unreachable .icon { color: #dc3545; }
+  .status-card.delayed .icon { color: #fd7e14; }
+  .status-card.partially-delivered .icon { color: #6f42c1; }
+  .status-card.canceled .icon { color: #d63384; }
+  .status-card.rejected-payment .icon { color: #007bff; }
+  .status-card.rejected-no-payment .icon { color: #6c757d; }
+  
+  @media (max-width: 576px) {
+    .status-card {
+      padding: 20px;
+    }
+  
+    .status-card h5 {
+      font-size: 1rem;
+    }
+  
+    .status-card p {
+      font-size: 1.1rem;
+    }
+  }
+  
+  
