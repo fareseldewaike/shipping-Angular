@@ -1,0 +1,45 @@
+<div class="mt-5 container p-5 bg-white shadow rounded branches-container">
+    <h1 class="text-center text-muted mb-4 display-6 border-bottom pb-2 animate-fade-in">المناديب</h1>
+  
+    <div class="d-flex justify-content-end mb-3">
+      <button class="btn btn-outline-primary px-4 py-2 animate-pop" [routerLink]="[0, 'edit']">
+        <i class="fas fa-plus me-2"></i> إضافة مندوب 
+      </button>
+    </div>
+  
+    <div class="table-responsive">
+      <table class="table table-hover align-middle text-center animate-slide-up">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">المعرف</th>
+            <th scope="col">الاسم</th>
+            <th scope="col">البريد الالكتروني</th>
+            <th scope="col">رقم الهاتف</th>
+            <th scope="col">المحافظه</th>
+            <th scope="col"> العنوان</th>
+            <th scope="col">العمليات</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let repr of represents">
+            <th scope="row">{{ repr.id }}</th>
+            <td>{{ repr.name }}</td>
+            <td>{{ repr.email }}</td>
+            <td>{{ repr.phone}}</td>
+            <td>
+                <ul class="list-unstyled mb-0">
+                  <li *ngFor="let gov of repr.governorates">{{ gov.name }}</li>
+                </ul>
+              </td>              
+            <td>{{ repr.address }}</td>
+
+            <td>
+              <!-- <i class="text-info fs-5 mx-2 fas fa-pencil-alt cursor-pointer" [routerLink]="['/Representatives', repr.id, 'edit']" title="تعديل"></i> -->
+              <i class="text-danger fs-5 mx-2 fas fa-trash cursor-pointer" (click)="deleteHandler(repr.id)" title="حذف"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

@@ -1,0 +1,62 @@
+.city-container {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
+  .table th,
+  .table td {
+    vertical-align: middle;
+  }
+  
+
+  .cursor-pointer {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .cursor-pointer:hover {
+    transform: scale(1.1);
+  }
+  
+ 
+  .animate-fade-in {
+    animation: fadeIn 1s ease;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.9s ease-out;
+  }
+  
+  .animate-pop {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .animate-pop:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Keyframes */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(25px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  

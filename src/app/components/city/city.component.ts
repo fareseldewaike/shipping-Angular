@@ -86,5 +86,4 @@ export class CityComponent implements OnInit , OnDestroy{
 
 
 
-
 }

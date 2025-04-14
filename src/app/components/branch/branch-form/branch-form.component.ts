@@ -63,7 +63,6 @@ branchHandler() {
       this.branchService.addNewBranch(this.branchForm.value).subscribe({
         next: (response) => {
           this.router.navigate(['/branches'], {
-            // queryParams: { category: 'phones' },
           });
         },
       });

@@ -16,9 +16,7 @@ export class CityFormComponent implements OnInit{
   cityId: any;
 
   constructor(private governorateService: GovernorateService, private cityService: CityService,private router: Router,
-               private activatedRoute: ActivatedRoute
-  ) 
-  {}
+               private activatedRoute: ActivatedRoute) {}
 
 
     cityForm = new FormGroup(

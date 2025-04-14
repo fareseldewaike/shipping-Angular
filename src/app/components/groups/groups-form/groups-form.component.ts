@@ -179,11 +179,3 @@ export class GroupsFormComponent implements OnInit {
     return permissionMapping[permissionName] || 0;
   }
 }
-
-
-
-
-
-
-
-

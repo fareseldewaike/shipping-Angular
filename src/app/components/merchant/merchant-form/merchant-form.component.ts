@@ -23,6 +23,12 @@ export class MerchantFormComponent implements OnInit{
   cities: ICity[] = [];
 
   priceCities: ICity[] = [];
+  citiesList: ICity[][] = [];
+
+  errorMessages: { Email: string; Name: string} = {
+    Email: '',
+    Name: '',
+  };
 
   constructor(private merchantService: MerchantService, private branchService: BranchService,
                private governService: GovernorateService, private cityService: CityService,
@@ -34,20 +40,22 @@ export class MerchantFormComponent implements OnInit{
   merchantForm = new FormGroup({
     MerchantName: new FormControl('', [Validators.required, Validators.minLength(3)]),
     Email: new FormControl('', [Validators.required, Validators.email]),
-    Password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    Password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6), 
+      Validators.pattern(/^(?=.*[A-Z])/), 
+      Validators.pattern(/^(?=.*\d)/),   
+      Validators.pattern(/^(?=.*[^a-zA-Z0-9])/), 
+    ]),
+    
     BranchId: new FormControl('', Validators.required),
-    PhoneNumber: new FormControl('', [Validators.required /*, Validators.pattern(/^01[0125][0-9]{8}$/)*/]),
+    PhoneNumber: new FormControl('', [Validators.required , Validators.pattern(/^01[0125][0-9]{8}$/)]),
     Address: new FormControl('', Validators.required),
     StoreName: new FormControl(''),
     governorateId: new FormControl(''),
     CityId: new FormControl(''),
     PickUp: new FormControl(''),
     returnerPercent: new FormControl(''),
-  
-    //special price
-    // PriceGovernId: new FormControl(''),
-    // PriceCityId: new FormControl(''),
-    // Price: new FormControl(''),
 
 
     SpecialPrices: new FormArray([])
@@ -172,12 +180,14 @@ export class MerchantFormComponent implements OnInit{
     this.cities = selectedGov ? selectedGov.cities : [];
   }
 
-  onGovernoratePriceChange(event: Event): void {
+  onGovernoratePriceChange(event: Event, index: number): void {
     const selectElement = event.target as HTMLSelectElement;
     const govId = Number(selectElement.value);
   
     const selectedGov = this.governs.find(g => g.id === govId);
-    this.priceCities = selectedGov ? selectedGov.cities : [];
+  
+    // تحديث مدن المحافظة الخاصة بالسطر الحالي
+    this.citiesList[index] = selectedGov ? selectedGov.cities : [];
   }
 
 
@@ -192,6 +202,23 @@ export class MerchantFormComponent implements OnInit{
             });
           },
           error: (err) => {
+            if (err.status === 400 && Array.isArray(err.error)) {
+              err.error.forEach((error: any) => {
+                // console.log('Error code =>', error.code);
+          
+                if (error.code === 'DuplicateEmail') {
+                  this.errorMessages.Email = 'البريد الإلكتروني مستخدم بالفعل';
+                }
+          
+                if (error.code === 'DuplicateUserName') {
+                  this.errorMessages.Name = 'الاسم مستخدم بالفعل';
+                }
+              });
+            } 
+            else {
+               alert('Something went wrong while adding the employee.');
+            }
+
             console.log("Error from server:", err.error);
             console.log(" Validation errors:", err.error.errors);
           }
@@ -199,8 +226,7 @@ export class MerchantFormComponent implements OnInit{
       } else {
         //edit
         this.merchantService
-          .editMerchant(this.merchantId, this.merchantForm.value)
-          .subscribe({
+          .editMerchant(this.merchantId, this.merchantForm.value).subscribe({
             next: () => {
               this.router.navigate(['/merchants']);
             },
