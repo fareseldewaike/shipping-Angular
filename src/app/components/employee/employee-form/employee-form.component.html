@@ -1,0 +1,130 @@
+<div class="container p-4 mt-5 bg-white shadow rounded city-form-container animate-fade-in">
+    <h1 class="mb-4 border-bottom pb-2 display-6 text-center">
+      {{ employeeId == 0 ? "إضافة موظف " : "تعديل الموظف" }}
+    </h1>
+  
+    <form [formGroup]="employeeForm" (submit)="employeeHandler()" novalidate>
+  
+      <!-- اسم الموظف -->
+      <div class="mb-3">
+        <label for="empName" class="form-label fw-bold">اسم الموظف</label>
+        <input type="text" class="form-control" id="empName"
+          placeholder="أدخل اسم الموظف"
+          formControlName="Name" />
+
+        <div *ngIf="getName.touched">
+          <small *ngIf="getName.hasError('required')" class="text-danger">
+            اسم الموظف مطلوب
+          </small>
+          <small *ngIf="getName.hasError('minlength')" class="text-danger">
+            اسم الموظف يجب أن يكون أطول من ٣ أحرف
+          </small>
+        </div>
+      </div>
+
+      <!-- البريد الالكتروني  -->
+      <div class="mb-3">
+        <label for="Email" class="form-label fw-bold"> البريد الالكتروني </label>
+        <input type="text" class="form-control" id="Email" placeholder="أدخل البريد الالكتروني" formControlName="Email" />
+      
+        <div *ngIf="getEmail.touched || getEmail.dirty">
+          <small *ngIf="getEmail.hasError('required')" class="text-danger">
+            البريد الالكتروني مطلوب
+          </small>
+      
+          <small *ngIf="getEmail.hasError('email')" class="text-danger">
+            البريد الالكتروني غير صالح
+          </small>
+    
+          <small *ngIf="emailError" class="text-danger">
+            {{ emailError }}
+          </small>
+        </div>
+      </div>
+
+      <!-- كلمه المرور -->
+      <div class="mb-3">
+        <label for="Password" class="form-label fw-bold">كلمة المرور</label>
+        <input type="password" class="form-control" id="Password" formControlName="Password" placeholder="ادخل كلمة المرور">
+      
+        <div *ngIf="getPassword.touched || getPassword.dirty">
+          <small *ngIf="getPassword.hasError('required')" class="text-danger">
+            كلمة المرور مطلوبة
+          </small>
+          <small *ngIf="getPassword.hasError('minlength')" class="text-danger">
+            كلمة المرور يجب ألا تقل عن 6 أحرف.
+          </small>
+          <small *ngIf="getPassword.hasError('pattern') && !getPassword.hasError('minlength')" class="text-danger">
+            كلمة المرور يجب أن تحتوي على حرف كابيتال ورقم ورمز خاص.
+          </small>
+        </div>
+      </div>    
+
+      <!-- الفرع -->
+      <div class="mb-3">
+        <label for="branch" class="form-label fw-bold">الفرع</label>
+        <select id="branch" class="form-select" formControlName="BranchId">
+          <option value="">-- اختر الفرع --</option>
+          <option *ngFor="let branch of branches" [value]="branch.id">{{ branch.name }}</option>
+        </select>
+        <div
+          *ngIf="employeeForm.controls['BranchId'].touched && employeeForm.controls['BranchId'].hasError('required')"
+          class="text-danger mt-1"
+        >
+          اختيار الفرع مطلوب
+        </div>
+      </div>
+  
+      <!-- الهاتف -->
+      <div class="mb-3">
+        <label for="PhoneNumber" class="form-label fw-bold">رقم الهاتف  </label>
+        <input type="text" class="form-control" id="PhoneNumber" placeholder="أدخل رقم الهاتف "
+          formControlName="PhoneNumber"/>
+
+        <div *ngIf="getPhoneNumber.touched && getPhoneNumber.hasError('required')" class="text-danger mt-1">
+            رقم الهاتف   مطلوبة
+        </div>
+
+        <small *ngIf="getPhoneNumber.hasError('pattern')" class="text-danger">
+          رقم التليفون غير صالح، برجاء إدخال رقم صحيح.
+        </small>
+      </div>
+  
+      <!-- الصلاحيه -->
+      <div class="mb-3">
+        <label for="Group" class="form-label fw-bold">الصلاحيات</label>
+        <select id="Group" class="form-select" formControlName="GroupId">
+          <option value="">-- اختر الصلاحيه --</option>
+          <option *ngFor="let group of groups" [value]="group.id">{{ group.name }}</option>
+        </select>
+        <div
+          *ngIf="employeeForm.controls['GroupId'].touched && employeeForm.controls['GroupId'].hasError('required')"
+          class="text-danger mt-1">
+          اختيار الصلاحيه مطلوب
+        </div>
+      </div>
+  
+      <!-- العنوان -->
+      <div class="mb-3">
+        <label for="addresss" class="form-label fw-bold"> العنوان  </label>
+        <input type="text" class="form-control" id="addresss" placeholder="أدخل  العنوان "
+          formControlName="Address"/>
+
+        <div *ngIf="getAddress.touched && getAddress.hasError('required')" class="text-danger mt-1">
+             العنوان  مطلوبة
+        </div>
+      </div>
+      
+      <div class="d-flex justify-content-start mt-4">
+        <button type="submit" class="btn btn-success px-4 py-2 mx-2 animate-pop">
+          {{ employeeId == 0 ? "إضافة الموظف" : "تحديث البيانات" }}
+        </button>
+  
+        <a
+          class="btn btn-outline-secondary px-4 py-2 mx-2 animate-pop"
+          [routerLink]="['/employees']"> الرجوع للقائمة
+        </a>
+      </div>
+    </form>
+  </div>
+  

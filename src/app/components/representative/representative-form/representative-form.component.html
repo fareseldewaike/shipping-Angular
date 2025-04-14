@@ -1,22 +1,25 @@
 <div class="container p-4 mt-5 bg-white shadow rounded city-form-container animate-fade-in">
     <h1 class="mb-4 border-bottom pb-2 display-6 text-center">
-      {{ merchantId == 0 ? "إضافة تاجر " : "تعديل تاجر" }}
+      {{ representId == 0 ? "إضافة مندوب " : "تعديل مندوب" }}
     </h1>
   
-    <form [formGroup]="merchantForm" (submit)="merchantHandler()" novalidate>
+    <form [formGroup]="represntForm" (submit)="reprsntHandler()" novalidate>
   
-      <!-- اسم التاجر -->
+      <!-- اسم المندوب -->
       <div class="mb-3">
-        <label for="merchantName" class="form-label fw-bold">اسم التاجر</label>
-        <input type="text"  class="form-control"  id="merchantName" placeholder="أدخل اسم التاجر"
-               formControlName="MerchantName"/>
+        <label for="merchantName" class="form-label fw-bold">اسم المندوب</label>
+        <input type="text"  class="form-control"  id="merchantName" placeholder="أدخل اسم المندوب"
+               formControlName="Name"/>
 
         <div *ngIf="getName.touched">
           <small *ngIf="getName.hasError('required')" class="text-danger">
-            اسم التاجر مطلوب
+            اسم المندوب مطلوب
           </small>
           <small *ngIf="getName.hasError('minlength')" class="text-danger">
-            اسم التاجر يجب أن يكون أطول من ٣ أحرف
+            اسم المندوب يجب أن يكون أطول من ٣ أحرف
+          </small>
+          <small *ngIf="errorMessages.Name" class="text-danger">
+            {{ errorMessages.Name }}
           </small>
         </div>
       </div>
@@ -67,9 +70,22 @@
           <option *ngFor="let branch of branches" [value]="branch.id">{{ branch.name }}</option>
         </select>
         <div
-          *ngIf="merchantForm.controls['BranchId'].touched && merchantForm.controls['BranchId'].hasError('required')"
+          *ngIf="represntForm.controls['BranchId'].touched && represntForm.controls['BranchId'].hasError('required')"
           class="text-danger mt-1">
           اختيار الفرع مطلوب
+        </div>
+      </div>
+
+      <!-- المحافظات -->
+      <div class="mb-3">
+        <label for="governorate" class="form-label fw-bold">المحافظات</label>
+        <select id="governorate" class="form-select" formControlName="GovernorateIds" multiple>
+          <option *ngFor="let gov of governs" [value]="gov.id">{{ gov.name }}</option>
+        </select>
+        <div
+          *ngIf="represntForm.controls['GovernorateIds'].touched && represntForm.controls['GovernorateIds'].hasError('required')"
+          class="text-danger mt-1">
+          اختيار محافظة واحدة على الأقل مطلوب
         </div>
       </div>
 
@@ -78,7 +94,7 @@
       <div class="mb-3">
         <label for="PhoneNumber" class="form-label fw-bold">رقم الهاتف  </label>
         <input type="text" class="form-control" id="PhoneNumber" placeholder="أدخل رقم الهاتف "
-          formControlName="PhoneNumber"/>
+          formControlName="Phone"/>
 
         <div *ngIf="getPhoneNum.touched && getPhoneNum.hasError('required')" class="text-danger mt-1">
             رقم الهاتف   مطلوبة
@@ -88,7 +104,6 @@
           رقم التليفون غير صالح، برجاء إدخال رقم صحيح.
         </small>
       </div>
-    
 
       <!-- العنوان  -->
       <div class="mb-3">
@@ -103,109 +118,26 @@
         </div>
       </div>
 
-      <!-- اسم المتجر  -->
-      <div class="mb-3">
-        <label for="StoreName" class="form-label fw-bold">   </label>
-        <input type="text"  class="form-control"  id="StoreName" placeholder="أدخل المتجر  "
-               formControlName="StoreName"/>
-               
-        <!-- <div *ngIf="getAddress.touched">
-          <small *ngIf="getAddress.hasError('required')" class="text-danger">
-            رقم  العنوان
-          </small>
-        </div> -->
-      </div>
-
-      <!-- المحافظة -->
-      <div class="mb-3">
-        <label for="governorate" class="form-label fw-bold">المحافظة  </label>
-        <select id="governorate" class="form-select" formControlName="governorateId" (change)="onGovernorateChange($event)">
-          <option value="">-- اختر المحافظة --</option>
-          <option *ngFor="let gov of governs" [value]="gov.id">{{ gov.name }}</option>
-        </select>
-        <!-- <div
-          *ngIf="cityForm.controls['GovernorateId'].touched && cityForm.controls['GovernorateId'].hasError('required')"
-          class="text-danger mt-1"
-        >
-          اختيار المحافظة مطلوب
-        </div> -->
-      </div>
-
-      <!-- المدينه -->
-      <div class="mb-3">
-        <label for="city" class="form-label fw-bold">المدينه  </label>
-        <select id="city" class="form-select" formControlName="CityId">
-          <option value="">-- اختر المدينه --</option>
-          <option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</option>
-        </select>
-      </div>
+        
   
       <!-- التكلفة -->
       <div class="mb-3">
         <label for="PickUp" class="form-label fw-bold">تكلفة خاصه</label>
         <input type="text" class="form-control" id="PickUp" placeholder="أدخل تكلفة pickup خاصه"
-          formControlName="PickUp"/>
+          formControlName="Amount"/>
       </div>
   
-      <!-- التكلفة -->
-      <div class="mb-3">
-        <label for="returnerPercent" class="form-label fw-bold">نسبه تحمل التاجر للطلبات المرفوضه  </label>
-        <input type="text" class="form-control" id="returnerPercent" placeholder="أدخل النسبه"
-          formControlName="returnerPercent"
-        />
-      </div>
-     
-
-
-
-
-      <hr />
-<h5>الأسعار الخاصة</h5>
-
-<div formArrayName="SpecialPrices" *ngIf="specialPrices.controls.length > 0">
-  <div *ngFor="let sp of specialPrices.controls; let i = index" [formGroupName]="i" class="mb-3 border p-3 rounded bg-light">
-    <div class="row">
-      <div class="col-md-4">
-        <label class="form-label fw-bold">المحافظة</label>
-        <select class="form-select" formControlName="governorateId" (change)="onGovernoratePriceChange($event, i)">
-          <option value="">-- اختر المحافظة --</option>
-          <option *ngFor="let gov of governs" [value]="gov.id">{{ gov.name }}</option>
-        </select>
-      </div>
-
-      <div class="col-md-4">
-        <label class="form-label fw-bold">المدينة</label>
-        <select class="form-select" formControlName="cityId">
-          <option value="">-- اختر المدينة --</option>
-          <option *ngFor="let city of citiesList[i]" [value]="city.id">{{ city.name }}</option>
-        </select>
-      </div>
-
-      <div class="col-md-3">
-        <label class="form-label fw-bold">السعر</label>
-        <input type="text" class="form-control" formControlName="price" placeholder="أدخل السعر" />
-      </div>
-
-      <div class="col-md-1 d-flex align-items-end">
-        <button type="button" class="btn btn-danger" (click)="removeSpecialPrice(i)">X</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<button type="button" class="btn btn-secondary my-2" (click)="addSpecialPrice()">➕ إضافة سعر خاص</button>
-
-
+        
 
   
       <div class="d-flex justify-content-start mt-4">
         <button type="submit" class="btn btn-success px-4 py-2 mx-2 animate-pop">
-          {{ merchantId == 0 ? "إضافة تاجر" : "تحديث البيانات" }}
+          {{ representId == 0 ? "إضافة مندوب" : "تحديث البيانات" }}
         </button>
   
         <a
           class="btn btn-outline-secondary px-4 py-2 mx-2 animate-pop"
-          [routerLink]="['/merchants']"
+          [routerLink]="['/Representatives']"
         >
           الرجوع للقائمة
         </a>

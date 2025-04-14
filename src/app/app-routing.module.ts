@@ -22,6 +22,10 @@ import { AdminLayoutComponent } from './components/admin-layout/admin-layout.com
 import { GroupEditComponent } from './components/groups/group-edit/group-edit.component';
 import { MerchantComponent } from './components/merchant/merchant.component';
 import { MerchantFormComponent } from './components/merchant/merchant-form/merchant-form.component';
+import { EmployeeComponent } from './components/employee/employee.component';
+import { EmployeeFormComponent } from './components/employee/employee-form/employee-form.component';
+import { RepresentativeComponent } from './components/representative/representative.component';
+import { RepresentativeFormComponent } from './components/representative/representative-form/representative-form.component';
 
 
 const routes: Routes = [
@@ -68,11 +72,18 @@ const routes: Routes = [
     { path: 'groups/:id/edit', component: GroupsFormComponent },
     
 
-
       //merchants
     { path: 'merchants', component: MerchantComponent },
     { path: 'merchants/:id/edit', component: MerchantFormComponent },
 
+
+    //employees
+    { path: 'employees', component: EmployeeComponent },
+    { path: 'employees/:id/edit', component: EmployeeFormComponent },
+
+    //Representative
+    { path: 'Representatives', component: RepresentativeComponent },
+    { path: 'Representatives/:id/edit', component: RepresentativeFormComponent },
 
      ]
   },

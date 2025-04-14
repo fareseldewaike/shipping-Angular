@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { AuthNavComponent } from './components/auth-nav/auth-nav.component';
 import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
@@ -29,6 +29,10 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { GroupEditComponent } from './components/groups/group-edit/group-edit.component';
 import { MerchantFormComponent } from './components/merchant/merchant-form/merchant-form.component';
 import { MerchantComponent } from './components/merchant/merchant.component';
+import { EmployeeComponent } from './components/employee/employee.component';
+import { RepresentativeComponent } from './components/representative/representative.component';
+import { EmployeeFormComponent } from './components/employee/employee-form/employee-form.component';
+import { RepresentativeFormComponent } from './components/representative/representative-form/representative-form.component';
 
 
 
@@ -57,7 +61,11 @@ import { MerchantComponent } from './components/merchant/merchant.component';
    SidebarComponent,
    GroupEditComponent,
    MerchantFormComponent,
-   MerchantComponent
+   MerchantComponent,
+   EmployeeComponent,
+   RepresentativeComponent,
+   EmployeeFormComponent,
+   RepresentativeFormComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +74,8 @@ import { MerchantComponent } from './components/merchant/merchant.component';
     HttpClientModule,
     RouterOutlet,
     RouterModule,
-    ReactiveFormsModule   
+    ReactiveFormsModule,
+    FormsModule,   
   ],
   providers: [],
   bootstrap: [AppComponent]
