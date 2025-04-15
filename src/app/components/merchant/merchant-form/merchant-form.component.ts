@@ -233,7 +233,10 @@ export class MerchantFormComponent implements OnInit{
           });
       }
     } else {
-      console.log('Errorrrrrrrrrr');
+      console.log('invalid data');
+      Object.keys(this.merchantForm.controls).forEach(key => {
+        this.merchantForm.get(key)?.markAsTouched();
+      });
     }
   }
 

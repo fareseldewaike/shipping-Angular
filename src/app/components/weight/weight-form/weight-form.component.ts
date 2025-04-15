@@ -77,7 +77,10 @@ branchHandler() {
         });
     }
   } else {
-    console.log('Errorrrrrrrrrr');
+    console.log('invalid data');
+    Object.keys(this.weightForm.controls).forEach(key => {
+      this.weightForm.get(key)?.markAsTouched();
+    });
   }
 }
 

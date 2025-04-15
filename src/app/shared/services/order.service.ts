@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { IOrder } from 'src/app/models/iorder';
 
 @Injectable({
   providedIn: 'root',
@@ -58,5 +59,8 @@ export class OrderService {
   deleteOrder(id: number): Observable<any> {
     //const params = new HttpParams().set('id', id.toString());
     return this.http.delete(`${this.baseUrl}/DeleteOrder/${id}`);
+  }
+  addNewOrder(order: any): Observable<IOrder> {
+    return this.http.post<IOrder>(`${this.baseUrl}/CreateOrder`, order);
   }
 }
