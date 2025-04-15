@@ -35,7 +35,7 @@ const routes: Routes = [
   {
     path: '',
     component: AdminLayoutComponent,
-     canActivate: [authGuard],
+   //  canActivate: [authGuard],
     children: [
       { path: 'branches', component: BranchComponent },
       { path: 'branches/:id/edit', component: BranchFormComponent },

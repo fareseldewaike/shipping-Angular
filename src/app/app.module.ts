@@ -35,6 +35,7 @@ import { EmployeeFormComponent } from './components/employee/employee-form/emplo
 import { RepresentativeFormComponent } from './components/representative/representative-form/representative-form.component';
 import { OrderComponent } from './components/order/order.component';
 import { OrderReportComponent } from './components/order-report/order-report.component';
+import { AddOrderComponent } from './components/add-order/add-order.component';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import { OrderReportComponent } from './components/order-report/order-report.com
    RepresentativeFormComponent,
    OrderComponent,
    OrderReportComponent,
+   AddOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +80,8 @@ import { OrderReportComponent } from './components/order-report/order-report.com
     RouterOutlet,
     RouterModule,
     ReactiveFormsModule,
-    FormsModule,   
+    FormsModule,
+       
   ],
   providers: [],
   bootstrap: [AppComponent]
