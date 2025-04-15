@@ -99,7 +99,10 @@ cityHandler() {
         });
     }
   } else {
-    console.log('Errorrrrrrrrrr');
+    console.log('invalid data');
+    Object.keys(this.cityForm.controls).forEach(key => {
+      this.cityForm.get(key)?.markAsTouched();
+    });
   }
 }
 

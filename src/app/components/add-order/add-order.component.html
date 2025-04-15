@@ -1,0 +1,373 @@
+<!-- order-form.component.html -->
+<div class="container-fluid py-4" dir="rtl">
+  <div class="row mb-4">
+    <div class="col-12">
+      <form [formGroup]="orderFormm" (submit)="onSubmit()" novalidate>
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center py-3">
+          <h5 class="mb-0">إضافة طلب</h5>
+        </div>
+        <div class="card-body">
+
+          <!-- Customer Information Section -->
+          <div class="row mb-4">
+            <div class="col-12">
+              <h6 class="text-primary mb-3 border-bottom pb-2">بيانات العميل</h6>
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="customerName" class="form-label">اسم العميل <span class="text-danger">*</span></label>
+              <input type="text" id="customerName" class="form-control" placeholder="الاسم"
+                     formControlName="clientName">
+
+              <div *ngIf="getclientName.touched">
+                 <small *ngIf="getclientName.hasError('required')" class="text-danger">
+                          اسم العميل مطلوب
+                 </small>
+                 <small *ngIf="getclientName.hasError('minlength')" class="text-danger">
+                      اسم العميل يجب أن يكون أطول من ٣ أحرف
+                 </small>
+              </div>       
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="phone" class="form-label">رقم الهاتف <span class="text-danger">*</span></label>
+              <input type="tel" id="phone" class="form-control" placeholder="رقم الهاتف"
+                    formControlName="firstPhoneNumber">
+                
+                <div *ngIf="getfirstPhoneNumber.touched && getfirstPhoneNumber.hasError('required')" class="text-danger mt-1">
+                        رقم الهاتف   مطلوبة
+                </div>
+                <small *ngIf="getfirstPhoneNumber.hasError('pattern')" class="text-danger">
+                      رقم التليفون غير صالح، برجاء إدخال رقم صحيح.
+                </small>    
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="phone2" class="form-label">رقم الهاتف 2</label>
+              <input type="tel" id="phone2" class="form-control" placeholder="رقم الهاتف 2"
+                     formControlName="secondPhoneNumber">
+                
+              <div *ngIf="getsecondPhoneNumber.touched && getsecondPhoneNumber.hasError('required')" class="text-danger mt-1">
+                      رقم الهاتف   مطلوبة
+              </div>
+              <small *ngIf="getsecondPhoneNumber.hasError('pattern')" class="text-danger">
+                    رقم التليفون غير صالح، برجاء إدخال رقم صحيح.
+              </small>   
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="email" class="form-label">البريد الإلكتروني</label>
+              <input type="email" id="email" class="form-control" placeholder="البريد الإلكتروني"
+                     formControlName="Email">
+                
+              <div *ngIf="getEmail.touched || getEmail.dirty">
+                <small *ngIf="getEmail.hasError('required')" class="text-danger">
+                      البريد الالكتروني مطلوب
+                </small>
+      
+                <small *ngIf="getEmail.hasError('email')" class="text-danger">
+                         البريد الالكتروني غير صالح
+                </small>
+              </div>       
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="deliveryType" class="form-label">النوع <span class="text-danger">*</span></label>
+              <select id="deliveryType" class="form-select" formControlName="OrderType">
+                <option selected disabled>التسليم في الفرع</option>
+                <option *ngFor="let type of orderTypeList" [value]="type.status">
+                  {{ type.label }}
+                </option>
+              </select>
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="merchant" class="form-label">التاجر<span class="text-danger">*</span></label>
+              <select id="merchant" class="form-select" formControlName="MerchantId">
+                <option *ngFor="let mer of merchants" [value]="mer.id">{{ mer.name }}</option>
+              </select>
+              <div *ngIf="orderFormm.controls['MerchantId'].touched && orderFormm.controls['MerchantId'].hasError('required')"
+                     class="text-danger mt-1">
+                          اختيار التاجر مطلوب
+              </div>
+            </div>
+          </div>
+
+          <!-- Address Information Section -->
+          <div class="row mb-4">
+            <div class="col-12">
+              <h6 class="text-primary mb-3 border-bottom pb-2">بيانات العنوان</h6>
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="governorate" class="form-label">المحافظة <span class="text-danger">*</span></label>
+              <select id="governorate" class="form-select" formControlName="governorateId" (change)="onGovernorateChange($event)">
+                <option selected disabled>اختر المحافظة</option>
+                <option *ngFor="let gov of governs" [value]="gov.id">{{ gov.name }}</option>
+              </select>
+              <div *ngIf="orderFormm.controls['governorateId'].touched && orderFormm.controls['governorateId'].hasError('required')"
+                     class="text-danger mt-1">
+                          اختيار المحافظة مطلوب
+              </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="city" class="form-label">المدينة <span class="text-danger">*</span></label>
+              <select id="city" class="form-select" formControlName="CityId">
+                <option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</option>
+              </select>
+              <div *ngIf="orderFormm.controls['governorateId'].touched && orderFormm.controls['governorateId'].hasError('required')"
+                     class="text-danger mt-1">
+                          اختيار المدينه مطلوب
+              </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="branch" class="form-label">الفرع <span class="text-danger">*</span></label>
+              <select id="branch" class="form-select"formControlName="BranchId">
+                <option value="">-- اختر الفرع --</option>
+                <option *ngFor="let branch of branches" [value]="branch.id">{{ branch.name }}</option>
+              </select>
+              <div
+                *ngIf="orderFormm.controls['BranchId'].touched && orderFormm.controls['BranchId'].hasError('required')"
+                class="text-danger mt-1">
+                       اختيار الفرع مطلوب
+              </div>
+            </div>
+
+            <div class="col-md-8 mb-3">
+              <label for="address" class="form-label">القرية و الشارع <span class="text-danger">*</span></label>
+              <input type="text" id="address" class="form-control" placeholder="القرية و الشارع">
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label class="form-label d-block">التوصيل لقرية؟</label>
+              <div class="form-check form-check-inline form-switch mt-2">
+                <input class="form-check-input" type="checkbox" id="villageDelivery"
+                       [checked]="getdeliverToVillage.value"
+                       (change)="onStatusChange($event)">
+                <label class="form-check-label" for="villageDelivery">نعم</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shipping Information Section -->
+          <div class="row mb-4">
+            <div class="col-12">
+              <h6 class="text-primary mb-3 border-bottom pb-2">بيانات الشحن</h6>
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="shippingType" class="form-label">نوع الشحن <span class="text-danger">*</span></label>
+              <select id="shippingType" class="form-select" formControlName="shippingType">
+                <option selected disabled>اختر نوع الشحن</option>
+                <option *ngFor="let type of shippingTypeList" [value]="type.status">
+                  {{ type.label }}
+                </option>
+              </select>
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="paymentType" class="form-label">نوع الدفع <span class="text-danger">*</span></label>
+              <select id="paymentType" class="form-select" formControlName="paymentType">
+                <option selected disabled>اختر نوع الدفع</option>
+                <option *ngFor="let type of paymentTypeList" [value]="type.status">
+                  {{ type.label }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Products Section -->
+          <div class="row mb-4">
+            <div class="col-12">
+              <h6 class="text-primary mb-3 border-bottom pb-2">المنتجات</h6>
+            </div>
+
+            <div formArrayName="products" *ngIf="GETproducts.controls.length > 0">
+              <div *ngFor="let prod of GETproducts.controls; let i = index" [formGroupName]="i" class="mb-3 border p-3 rounded bg-light">
+                <div class="row">
+
+                  <div class="mb-3">
+                    <label for="name" class="form-label">الاسم <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="name" formControlName="name" min="1">
+                    <div *ngIf="orderFormm.get('name')?.invalid && orderFormm.get('name')?.touched" class="validation-error">
+                           يرجى إدخال الاسم
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="quantity" class="form-label">الكمية <span class="text-danger">*</span></label>
+                    <input type="number" class="form-control" id="quantity" formControlName="quantity" min="1">
+                    <div *ngIf="orderFormm.get('quantity')?.invalid && orderFormm.get('quantity')?.touched" class="validation-error">
+                      يرجى إدخال الكمية
+                    </div>
+                  </div>
+            
+                  <div class="mb-3">
+                    <label for="weight" class="form-label">الوزن (كجم) <span class="text-danger">*</span></label>
+                    <input type="number" class="form-control" id="weight" formControlName="weight" step="0.1" min="0.1">
+                    <div *ngIf="orderFormm.get('weight')?.invalid && orderFormm.get('weight')?.touched" class="validation-error">
+                      يرجى إدخال الوزن
+                    </div>
+                  </div>
+            
+                  <div class="col-md-1 d-flex align-items-end">
+                    <button type="button" class="btn btn-danger" (click)="removeproduct(i)">X</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <button type="button" class="btn btn-primary my-2" (click)="addProducts()">➕ إضافة منتج </button>
+            
+
+
+
+            <!-- <div class="col-12">
+              <h6 class="text-primary mb-3 border-bottom pb-2">المنتجات</h6>
+            </div>
+
+            <div class="col-12">
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                  <thead class="table-light">
+                    <tr>
+                      <th>اسم المنتج</th>
+                      <th>الكمية</th>
+                      <th>الوزن (كجم)</th>
+                      <th>حذف</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colspan="4" class="text-center py-3 text-muted">لا يوجد منتجات</td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="4" class="p-0">
+                        <button type="button" class="btn btn-info text-white w-100 py-2">
+                          <i class="bi bi-plus-circle me-2"></i> إضافة منتج
+                        </button>
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+            
+
+            <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="productModalLabel">إضافة منتج</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body" dir="rtl">
+                    <form [formGroup]="productformm">
+                      <div class="mb-3">
+                        <label for="productName" class="form-label">اسم المنتج <span class="text-danger">*</span></label>
+                        <select class="form-select" id="productName" formControlName="name">
+                          <option value="" disabled>اختر المنتج</option>
+                          <option *ngFor="let product of productsList" [value]="product">{{product}}</option>
+                        </select>
+                        <div *ngIf="productformm.get('name')?.invalid && productformm.get('name')?.touched" class="validation-error">
+                          يرجى اختيار المنتج
+                        </div>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="quantity" class="form-label">الكمية <span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" id="quantity" formControlName="quantity" min="1">
+                        <div *ngIf="productformm.get('quantity')?.invalid && productformm.get('quantity')?.touched" class="validation-error">
+                          يرجى إدخال الكمية
+                        </div>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="weight" class="form-label">الوزن (كجم) <span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" id="weight" formControlName="weight" step="0.1" min="0.1">
+                        <div *ngIf="productformm.get('weight')?.invalid && productformm.get('weight')?.touched" class="validation-error">
+                          يرجى إدخال الوزن
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                    <button type="button" class="btn btn-primary" (click)="saveProduct()" [disabled]="productformm.invalid">إضافة</button>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+           
+            
+
+
+            <div class="col-md-4 mb-3">
+              <label for="totalWeight" class="form-label">إجمالي الوزن (كجم) <span class="text-danger">*</span></label>
+              <input type="number" id="totalWeight" class="form-control" placeholder="إجمالي الوزن (كجم)" readonly
+                     formControlName="orderTotalWeight">>
+            </div>
+            
+            <div class="col-md-4 mb-3">
+              <label for="orderCost" class="form-label">تكلفة الطلب <span class="text-danger">*</span></label>
+              <input type="number" id="orderCost" class="form-control" placeholder="تكلفة الطلب"
+              formControlName="orderCost">
+
+              <div *ngIf="getorderCost.touched || getorderCost.dirty">
+                <small *ngIf="getorderCost.hasError('required')" class="text-danger">
+                        تكلفة الطلب  مطلوب
+                </small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notes Section -->
+          <div class="row mb-4">
+            <div class="col-12">
+              <label for="notes" class="form-label">ملاحظات</label>
+              <textarea id="notes" class="form-control" rows="3" placeholder="ملاحظات إضافية"
+                      formControlName="notes"></textarea>
+            </div>
+          </div>
+
+          <!-- Merchant Information Section -->
+          <div class="row mb-4">
+            <div class="col-12">
+              <h6 class="text-primary mb-3 border-bottom pb-2">بيانات التاجر</h6>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="merchantPhone" class="form-label">بيانات التاجر: رقم الهاتف <span class="text-danger">*</span></label>
+              <input type="tel" id="merchantPhone" class="form-control" value="01245789568">
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="merchantAddress" class="form-label">العنوان <span class="text-danger">*</span></label>
+              <input type="text" id="merchantAddress" class="form-control" value="sadsdsaaa"
+                     formControlName="street">
+                     
+              <div *ngIf="getorderstreet.touched">
+                 <small *ngIf="getorderstreet.hasError('required')" class="text-danger">
+                           العنوان مطلوب
+                 </small>
+              </div>  
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer bg-white text-end py-3">
+          <button type="submit" class="btn btn-primary px-4 py-2">
+            <i class="bi bi-save me-2"></i> حفظ
+          </button>
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+

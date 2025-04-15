@@ -44,7 +44,7 @@
       </a>
     </li>
     <li class="nav-item mb-2" *ngIf="role === 'Admin' || role === 'Employee' || role === 'Merchant'">
-      <a routerLink="/addorder" class="nav-link text-white">
+      <a [routerLink]="['/addorder', 0, 'edit']" class="nav-link text-white">
         <i class="fas fa-truck me-2"></i> اضافه طلب
       </a>
     </li>
@@ -71,11 +71,7 @@
       </a>
     </li>
 
-    <li class="nav-item mb-2">
-      <a routerLink="/social-media" class="nav-link text-white">
-        <i class="fas fa-share-alt me-2"></i> السوشيال ميديا
-      </a>
-    </li>
+   
     <li class="nav-item mb-2" *ngIf="role === 'Admin' ">
       <a routerLink="/employees" class="nav-link text-white">
         <i class="fas fa-users me-2"></i> الموظفين

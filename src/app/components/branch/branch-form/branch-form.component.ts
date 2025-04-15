@@ -77,7 +77,10 @@ branchHandler() {
         });
     }
   } else {
-    console.log('Errorrrrrrrrrr');
+    console.log('invalid data');
+    Object.keys(this.branchForm.controls).forEach(key => {
+      this.branchForm.get(key)?.markAsTouched();
+    });
   }
 }
 
