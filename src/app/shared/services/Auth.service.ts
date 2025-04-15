@@ -29,6 +29,7 @@ export class AuthService {
       // console.log(this.name);
       // console.log(this.id);
       localStorage.setItem("role", this.role);
+      localStorage.setItem('id', this.id);
       console.log(decodedToken);
     }
   }
@@ -39,8 +40,9 @@ export class AuthService {
   }
 
   SignOut(){
-    localStorage.removeItem("token")
-    localStorage.removeItem("role")
-    this.Router.navigate(['/login'])
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    localStorage.removeItem('id');
+    this.Router.navigate(['/login']);
   }
 }

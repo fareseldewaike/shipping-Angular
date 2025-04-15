@@ -8,11 +8,14 @@
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="fares" routerLink="/home" >الرئيسية</a>
           </li>
+           
           <li class="nav-item">
-            <a class="nav-link" routerLinkActive="fares" routerLink="/about">عن شركتنا</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLinkActive="fares" routerLink="/branches">dashboard </a>
+            <a
+              class="nav-link"
+              routerLinkActive="fares"
+              routerLink="/{{ navigation }}"
+              >لوحة التحكم
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="fares" routerLink="/login" (click)="SignOut()">تسجيل الخروج</a>

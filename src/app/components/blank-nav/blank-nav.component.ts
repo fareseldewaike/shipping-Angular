@@ -8,11 +8,22 @@ import { AuthService } from 'src/app/shared/services/Auth.service';
 })
 export class BlankNavComponent implements OnInit {
 
+ 
+
+  role: string = '';
+  navigation : string ="";
   constructor(private _authService: AuthService) { }
 
   ngOnInit() {
+    this.role = localStorage.getItem('role') || '';
+    if(this.role == 'admin') {
+      this.navigation = 'branches';
+    }
+    else {
+      this.navigation = 'Order';
+
+    }
   }
- 
   SignOut(){
     this._authService.SignOut();
   }

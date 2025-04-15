@@ -1,0 +1,157 @@
+<div class="container-fluid py-4">
+  <!-- Header Section -->
+
+  <!-- Filters Section -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <div class="row g-3 align-items-center">
+        <!-- Status Filter -->
+        <div class="col-md-2">
+          <label class="form-label">الحالات:</label>
+          <label class="form-label">{{ orders.length }}</label>
+          <select
+            class="form-select"
+            [(ngModel)]="selectedStatus"
+            (change)="onFilterChange()"
+          >
+            <option value="" selected>الكل</option>
+            <option value="0">جديد</option>
+            <option value="1">قيد الإنتظار</option>
+            <option value="2">تم التسليم</option>
+            <option value="3">تم التسليم للمندوب</option>
+            <option value="4">لا يمكن الوصول</option>
+            <option value="5">تم التأجيل جزئيا</option>
+            <option value="6">تم الإلغاء من قبل المستلم</option>
+            <option value="7">تم الرفض مع الدفع</option>
+            <option value="8">رفض مع سداد جزء</option>
+            <option value="9">رفض ولم يتم الدفع</option>
+            <option value="10">ملغي من التاجر</option>
+            <option value="11">مرتجع</option>
+          </select>
+        </div>
+
+        <!-- Date Range Filters -->
+        <div class="col-md-3">
+          <label class="form-label">من:</label>
+          <div class="input-group">
+            <input
+              type="date"
+              class="form-control"
+              [(ngModel)]="fromDate"
+              (change)="onFilterChange()"
+            />
+            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label">إلى:</label>
+          <div class="input-group">
+            <input
+              type="date"
+              class="form-control"
+              [(ngModel)]="toDate"
+              (change)="onFilterChange()"
+            />
+            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+          </div>
+        </div>
+
+        <!-- Filter Button -->
+        <div class="col-md-1 d-flex align-items-end">
+          <button class="btn btn-primary w-100 mt-4" (click)="onFilterChange()">
+            بحث
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Results Table -->
+  <div class="card shadow">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle">
+          <thead class="table-light">
+            <tr>
+              <th scope="col">الرقم التسلسلي</th>
+              <th scope="col">الحالة</th>
+              <th scope="col">التاجر</th>
+              <th scope="col">العميل</th>
+              <th scope="col">رقم الهاتف</th>
+              <th scope="col">المحافظة</th>
+              <th scope="col">المدينة</th>
+              <th scope="col">تكلفة الطلب</th>
+              <th scope="col">المبلغ المستلم</th>
+              <th scope="col">تكلفة الشحن</th>
+              <th scope="col">قيمة الشحن المدفوعة</th>
+              <th scope="col">قيمة الشركة</th>
+              <th scope="col">التاريخ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="text-center" *ngIf="orders.length === 0">
+              <td colspan="15" class="py-5 text-muted">
+                <div class="d-flex flex-column align-items-center">
+                  <i class="fa fa-search fa-3x mb-3"></i>
+                  <h5>لا توجد بيانات متاحة في الجدول</h5>
+                  <p>جرب تغيير معايير البحث أو إضافة سجلات جديدة</p>
+                </div>
+              </td>
+            </tr>
+            <tr *ngFor="let order of orders">
+              <td>{{ order.serialNumber }}</td>
+              <td>{{ getstatus(order.orderStatus) }}</td>
+              <td>{{ order.merchantName }}</td>
+              <td>{{ order.clientName }}</td>
+              <td>{{ order.phoneNumber }}</td>
+              <td>{{ order.governorate }}</td>
+              <td>{{ order.city }}</td>
+              <td>{{ order.orderCost }}</td>
+              <td>{{ order.paidAmount }}</td>
+              <td>{{ order.shippingCost }}</td>
+              <td>{{ order.paidshippingamount }}</td>
+              <td>{{ order.companyAmount }}</td>
+              <td>{{ order.date | date }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <nav *ngIf="totalPages > 1">
+        <ul class="pagination justify-content-center mt-3">
+          <li class="page-item" [class.disabled]="currentPage === 1">
+            <button
+              class="page-link"
+              (click)="goToPage(currentPage - 1)"
+              [disabled]="currentPage === 1"
+            >
+              السابق
+            </button>
+          </li>
+
+          <li
+            class="page-item"
+            *ngFor="let page of [].constructor(totalPages); let i = index"
+            [class.active]="currentPage === i + 1"
+          >
+            <button class="page-link" (click)="goToPage(i + 1)">
+              {{ i + 1 }}
+            </button>
+          </li>
+
+          <li class="page-item" [class.disabled]="currentPage === totalPages">
+            <button
+              class="page-link"
+              (click)="goToPage(currentPage + 1)"
+              [disabled]="currentPage === totalPages"
+            >
+              التالي
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

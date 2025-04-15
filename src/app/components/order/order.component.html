@@ -1,0 +1,193 @@
+<!-- order-management.component.html -->
+<div class="container-fluid mt-4">
+  <div class="row mb-3">
+    <div class="col-12">
+      <div class="card shadow-sm">
+        <div class="card-body p-0">
+          <!-- Navigation tabs -->
+          <ul class="nav nav-tabs nav-fill bg-light" dir="rtl">
+            <li class="nav-item" *ngFor="let tab of tabs">
+              <a
+                class="nav-link"
+                [class.active]="
+                  selectedStatus === tab.status ||
+                  (tab.status === undefined && selectedStatus === undefined)
+                "
+                (click)="onTabClick(tab.status)"
+                [ngClass]="{
+                  'fw-bold text-primary': selectedStatus === tab.status
+                }"
+                href="javascript:void(0)"
+              >
+                {{ tab.label }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="row mb-3">
+    <div class="col-md-8">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="بحث..." aria-label="Search">
+        <button class="btn btn-outline-secondary" type="button">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+    </div>
+    <div class="col-md-4 text-end">
+      <button class="btn btn-light me-2">
+        <i class="bi bi-file-pdf"></i> PDF
+      </button>
+      <button class="btn btn-light">
+        <i class="bi bi-file-excel"></i> Excel
+      </button>
+    </div>
+  </div> -->
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card shadow-sm">
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle" dir="rtl">
+              <thead class="bg-light">
+                <tr>
+                  <th scope="col" class="text-center">
+                    <input class="form-check-input" type="checkbox" />
+                  </th>
+                  <th scope="col" class="text-center">الرقم التسلسلي</th>
+                  <th scope="col" class="text-center">التاريخ</th>
+                  <th scope="col" class="text-center">بيانات العميل</th>
+                  <th scope="col" class="text-center">المحافظة</th>
+                  <th scope="col" class="text-center">المدينة</th>
+                  <th scope="col" class="text-center">تكلفة الطلب</th>
+                  <th scope="col" class="text-center">تعديل الطلب</th>
+                  <th scope="col" class="text-center">تغيير الحالة</th>
+                  <th scope="col" class="text-center">حذف</th>
+                  <th scope="col" class="text-center">
+                    <i class="bi bi-truck"></i>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let order of orders">
+                  <td class="text-center">
+                    <input class="form-check-input" type="checkbox" />
+                  </td>
+                  <td class="text-center">{{ order.serialNum }}</td>
+                  <td class="text-center">{{ order.date }}</td>
+                  <td class="text-center">
+                    <div>{{ order.clientName }}</div>
+                    <div class="text-muted small">{{ order.phoneNumber }}</div>
+                  </td>
+                  <td class="text-center">{{ order.governorate }}</td>
+                  <td class="text-center">{{ order.city }}</td>
+                  <td class="text-center">{{ order.orderCost }}</td>
+                  <td class="text-center">
+                    <button
+                      class="btn btn-sm btn-outline-primary rounded-circle"
+
+                    >
+                      <i class="bi bi-pencil"></i>
+                    </button>
+                  </td>
+                  <td class="text-center">
+                    <button class="btn btn-sm btn-primary px-3">الحالة</button>
+                  </td>
+                  <td class="text-center">
+                    <button
+                      class="btn btn-sm btn-outline-danger rounded-circle"
+                      (click)="deleteorder(order.serialNum)"
+                    >
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </td>
+                  <td class="text-center">
+                    <button
+                      class="btn btn-sm btn-info text-white rounded-circle"
+                    >
+                      <i class="bi bi-truck"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="row mt-3">
+    <div class="col-12">
+      <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">5</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">4</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">3</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">2</a>
+          </li>
+          <li class="page-item active">
+            <a class="page-link" href="#">1</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div> -->
+
+  <nav *ngIf="totalPages > 1">
+    <ul class="pagination justify-content-center mt-3">
+      <li
+        class="page-item"
+        [class.disabled]="currentPage === 1"
+      >
+        <button class="page-link" (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">
+          السابق
+        </button>
+      </li>
+
+      <li
+        class="page-item"
+        *ngFor="let page of [].constructor(totalPages); let i = index"
+        [class.aymann]="currentPage === i + 1"
+      >
+        <button class="page-link" (click)="goToPage(i + 1)">
+          {{ i + 1 }}
+        </button>
+      </li>
+
+      <li
+        class="page-item"
+        [class.disabled]="currentPage === totalPages"
+      >
+        <button class="page-link" (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">
+          التالي
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+
+
+
+</div>

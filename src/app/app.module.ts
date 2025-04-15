@@ -33,7 +33,9 @@ import { EmployeeComponent } from './components/employee/employee.component';
 import { RepresentativeComponent } from './components/representative/representative.component';
 import { EmployeeFormComponent } from './components/employee/employee-form/employee-form.component';
 import { RepresentativeFormComponent } from './components/representative/representative-form/representative-form.component';
-
+import { OrderComponent } from './components/order/order.component';
+import { AddOrderComponent } from './components/add-order/add-order.component';
+import { OrderReportComponent } from './components/order-report/order-report.component';
 
 
 @NgModule({
@@ -65,7 +67,10 @@ import { RepresentativeFormComponent } from './components/representative/represe
    EmployeeComponent,
    RepresentativeComponent,
    EmployeeFormComponent,
-   RepresentativeFormComponent
+   RepresentativeFormComponent,
+   OrderComponent,
+   AddOrderComponent,
+   OrderReportComponent,
   ],
   imports: [
     BrowserModule,

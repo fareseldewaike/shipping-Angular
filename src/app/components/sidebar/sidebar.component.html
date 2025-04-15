@@ -1,64 +1,90 @@
-<div class="d-flex flex-column text-white vh-100 p-3" style="width: 250px; background-color: #0a85b9;;">
-   
-  
-    <ul class="nav nav-pills flex-column">
-      <li class="nav-item mb-2">
-        <a routerLink="/home" class="nav-link text-white">
-          <i class="fas fa-home me-2"></i> الرئيسية
-        </a>
-      </li>
-  
-      <li class="nav-item mb-2">
-        <a routerLink="/branches" class="nav-link text-white">
-          <i class="fas fa-cog me-2"></i> الفروع
-        </a>
-      </li>
-  
-      <li class="nav-item mb-2">
-        <a routerLink="/merchants" class="nav-link text-white">
-          <i class="fas fa-users me-2"></i> التجار
-        </a>
-      </li>
-  
-      <li class="nav-item mb-2">
-        <a routerLink="/governorates" class="nav-link text-white">
-          <i class="fas fa-map-marked-alt me-2"></i> المناطق
-        </a>
-      </li>
+<div
+  class="d-flex flex-column bg-dark text-white vh-100 p-3 ayman"
+  style="width: 250px"
+>
+  <ul class="nav nav-pills flex-column">
+    <li class="nav-item mb-2">
+      <a routerLink="/home" class="nav-link text-white">
+        <i class="fas fa-home me-2"></i> الرئيسية
+      </a>
+    </li>
 
-      <li class="nav-item mb-2">
-        <a routerLink="/cities" class="nav-link text-white">
-          <i class="fas fa-map-marked-alt me-2"></i> المدن
-        </a>
-      </li>
-  
-      <li class="nav-item mb-2">
-        <a routerLink="/groups" class="nav-link text-white">
-          <i class="fas fa-lock me-2"></i> الصلاحيات
-        </a>
-      </li>
-  
-      <li class="nav-item mb-2">
-        <a routerLink="/pickup-requests" class="nav-link text-white">
-          <i class="fas fa-truck me-2"></i> طلبات pickup
-        </a>
-      </li>
-  
-      <li class="nav-item mb-2">
-        <a routerLink="/weights" class="nav-link text-white">
-          <i class="fas fa-wallet me-2"></i> اعدادات الوزن
-        </a>
-      </li>
-  
-      <li class="nav-item mb-2">
-        <a routerLink="/employees" class="nav-link text-white">
-          <i class="fas fa-users me-2"></i> الموظفين
-        </a>
-      </li>
-      <li class="nav-item mb-2">
-        <a routerLink="/Representatives" class="nav-link text-white">
-          <i class="fas fa-users me-2"></i> المناديب
-        </a>
-      </li>
-    </ul>
-  </div>
+    <li class="nav-item mb-2" *ngIf="role === 'Admin' ">
+      <a routerLink="/branches" class="nav-link text-white">
+        <i class="fas fa-cog me-2"></i> الفروع
+      </a>
+    </li>
+
+    <li class="nav-item mb-2" *ngIf="role === 'Admin' || role === 'Employee'">
+      <a routerLink="/merchants" class="nav-link text-white">
+        <i class="fas fa-users me-2"></i> التجار
+      </a>
+    </li>
+
+    <li class="nav-item mb-2" *ngIf="role === 'Admin' || role === 'Employee'">
+      <a routerLink="/governorates" class="nav-link text-white">
+        <i class="fas fa-map-marked-alt me-2"></i> المناطق
+      </a>
+    </li>
+
+    <li class="nav-item mb-2" *ngIf="role === 'Admin' || role === 'Employee'">
+      <a routerLink="/cities" class="nav-link text-white">
+        <i class="fas fa-map-marked-alt me-2"></i> المدن
+      </a>
+    </li>
+
+    <li class="nav-item mb-2" *ngIf="role === 'Admin' ">
+      <a routerLink="/groups" class="nav-link text-white">
+        <i class="fas fa-lock me-2"></i> الصلاحيات
+      </a>
+    </li>
+    <li class="nav-item mb-2">
+      <a routerLink="/Order" class="nav-link text-white">
+        <i class="fas fa-truck me-2"></i> عرض الطلبات
+      </a>
+    </li>
+    <li class="nav-item mb-2" *ngIf="role === 'Admin' || role === 'Employee' || role === 'Merchant'">
+      <a routerLink="/addorder" class="nav-link text-white">
+        <i class="fas fa-truck me-2"></i> اضافه طلب
+      </a>
+    </li>
+
+    <li class="nav-item mb-2">
+      <a routerLink="/pickup-requests" class="nav-link text-white">
+        <i class="fas fa-truck me-2"></i> طلبات pickup
+      </a>
+    </li>
+
+    <li class="nav-item mb-2" *ngIf="role === 'Admin' || role === 'Employee'">
+      <a routerLink="/weights" class="nav-link text-white">
+        <i class="fas fa-wallet me-2"></i> اعدادات الوزن
+      </a>
+    </li>
+    <li class="nav-item mb-2" *ngIf="role === 'Admin' || role === 'Employee'">
+      <a routerLink="/order-report" class="nav-link text-white">
+        <i class="fas fa-truck me-2"></i> تقارير الطلبات
+      </a>
+    </li>
+    <li class="nav-item mb-2" *ngIf="role === 'Admin' || role === 'Employee'">
+      <a routerLink="/reports" class="nav-link text-white">
+        <i class="fas fa-chart-line me-2"></i> تقارير الحسابات
+      </a>
+    </li>
+
+    <li class="nav-item mb-2">
+      <a routerLink="/social-media" class="nav-link text-white">
+        <i class="fas fa-share-alt me-2"></i> السوشيال ميديا
+      </a>
+    </li>
+    <li class="nav-item mb-2" *ngIf="role === 'Admin' ">
+      <a routerLink="/employees" class="nav-link text-white">
+        <i class="fas fa-users me-2"></i> الموظفين
+      </a>
+    </li>
+    <li class="nav-item mb-2"  *ngIf="role === 'Admin'|| role === 'Employee' ">
+      <a routerLink="/Representatives" class="nav-link text-white">
+        <i class="fas fa-users me-2"></i> المناديب
+      </a>
+    </li>
+  </ul>
+</div>
