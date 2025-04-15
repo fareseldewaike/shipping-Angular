@@ -45,7 +45,7 @@ export class RepresentativeComponent implements OnInit, OnDestroy{
             showCancelButton: true,
             confirmButtonText: 'نعم، احذفه!',
             cancelButtonText: 'إلغاء',
-          }).then((result) => {
+          }).then((result:any) => {
             if (result.isConfirmed) {
               this.representService.deleteRepresentative(ReprId).subscribe(() => {
                 this.represents = this.represents.filter(

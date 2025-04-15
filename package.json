@@ -20,11 +20,11 @@
     "@angular/router": "^16.2.0",
     "@fortawesome/fontawesome-free": "^6.7.2",
     "aos": "^2.3.4",
-    "bootstrap": "^5.3.3",
+    "bootstrap": "^5.3.5",
     "bootstrap-icons": "^1.11.3",
     "jwt-decode": "^4.0.0",
     "rxjs": "~7.8.0",
-    "sweetalert2": "^11.17.2",
+    "sweetalert2": "^11.18.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },

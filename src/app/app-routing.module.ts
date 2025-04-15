@@ -27,7 +27,6 @@ import { EmployeeFormComponent } from './components/employee/employee-form/emplo
 import { RepresentativeComponent } from './components/representative/representative.component';
 import { RepresentativeFormComponent } from './components/representative/representative-form/representative-form.component';
 import { OrderComponent } from './components/order/order.component';
-import { AddOrderComponent } from './components/add-order/add-order.component';
 import { OrderReportComponent } from './components/order-report/order-report.component';
 
 const routes: Routes = [
@@ -35,7 +34,7 @@ const routes: Routes = [
   {
     path: '',
     component: AdminLayoutComponent,
-    canActivate: [authGuard],
+     canActivate: [authGuard],
     children: [
       { path: 'branches', component: BranchComponent },
       { path: 'branches/:id/edit', component: BranchFormComponent },
@@ -53,8 +52,7 @@ const routes: Routes = [
     { path: 'employees/:id/edit', component: EmployeeFormComponent },
     { path: 'Representatives', component: RepresentativeComponent },
     { path: 'Representatives/:id/edit', component: RepresentativeFormComponent },
-      { path: 'Order', component: OrderComponent },
-      { path: 'addorder', component: AddOrderComponent },
+      { path: 'Order', component: OrderComponent },    
       { path: 'order-report', component: OrderReportComponent },
     ],
   },

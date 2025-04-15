@@ -34,7 +34,6 @@ import { RepresentativeComponent } from './components/representative/representat
 import { EmployeeFormComponent } from './components/employee/employee-form/employee-form.component';
 import { RepresentativeFormComponent } from './components/representative/representative-form/representative-form.component';
 import { OrderComponent } from './components/order/order.component';
-import { AddOrderComponent } from './components/add-order/add-order.component';
 import { OrderReportComponent } from './components/order-report/order-report.component';
 
 
@@ -69,7 +68,6 @@ import { OrderReportComponent } from './components/order-report/order-report.com
    EmployeeFormComponent,
    RepresentativeFormComponent,
    OrderComponent,
-   AddOrderComponent,
    OrderReportComponent,
   ],
   imports: [

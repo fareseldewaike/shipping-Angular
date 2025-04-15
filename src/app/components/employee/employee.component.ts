@@ -47,7 +47,7 @@ export class EmployeeComponent implements OnInit, OnDestroy{
             showCancelButton: true,
             confirmButtonText: 'نعم، احذفه!',
             cancelButtonText: 'إلغاء',
-          }).then((result) => {
+          }).then((result:any) => {
             if (result.isConfirmed) {
               this.employeeService.deleteEmployee(employeeId).subscribe(() => {
                 this.employees = this.employees.filter(
