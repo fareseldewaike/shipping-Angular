@@ -149,7 +149,10 @@ employeeHandler() {
       });
     }
   } else {
-    console.log('Invalid form data');
+    console.log('invalid data');
+    Object.keys(this.employeeForm.controls).forEach(key => {
+      this.employeeForm.get(key)?.markAsTouched();
+    });
   }
 }
 
