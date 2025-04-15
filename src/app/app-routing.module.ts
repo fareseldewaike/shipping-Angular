@@ -53,7 +53,7 @@ const routes: Routes = [
     { path: 'Representatives', component: RepresentativeComponent },
     { path: 'Representatives/:id/edit', component: RepresentativeFormComponent },
       { path: 'Order', component: OrderComponent },
-      { path: 'addorder', component: AddOrderComponent },
+      { path: 'addorder/:id/edit', component: AddOrderComponent },
       { path: 'order-report', component: OrderReportComponent },
     ],
   },
